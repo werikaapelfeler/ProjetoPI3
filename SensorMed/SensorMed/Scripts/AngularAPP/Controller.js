@@ -13,7 +13,7 @@ function paisAddController($scope, $http) {
             });
                 res.error(function(data) {
                     toastr['error']("Erro ao Cadastrar o Pais", "SensorMed - Medições de Dados");
-                });
+                });              //mariana                   
        }
 }
 

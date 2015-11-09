@@ -1,0 +1,695 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SensorMedModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Bairro">
+          <Key>
+            <PropertyRef Name="cd_bairro" />
+          </Key>
+          <Property Name="cd_bairro" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nm_bairro" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="cd_cidade" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cidade">
+          <Key>
+            <PropertyRef Name="cd_cidade" />
+          </Key>
+          <Property Name="cd_cidade" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nm_cidade" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="cd_microregiao" Type="int" Nullable="false" />
+          <Property Name="cd_estado" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Dados">
+          <Key>
+            <PropertyRef Name="dt_medicao_dados" />
+          </Key>
+          <Property Name="dt_medicao_dados" Type="datetime" Nullable="false" />
+          <Property Name="cd_sensor" Type="int" Nullable="false" />
+          <Property Name="vl_medicao_dados" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Endereco">
+          <Key>
+            <PropertyRef Name="cd_ender" />
+          </Key>
+          <Property Name="cd_ender" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nm_ender" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="CEP" Type="int" />
+          <Property Name="numero" Type="int" />
+          <Property Name="descricao" Type="varchar" MaxLength="45" />
+          <Property Name="cd_bairro" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Estado">
+          <Key>
+            <PropertyRef Name="cd_estado" />
+          </Key>
+          <Property Name="cd_estado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nm_estado" Type="varchar" MaxLength="45" />
+          <Property Name="cd_pais" Type="int" />
+        </EntityType>
+        <EntityType Name="Gruni">
+          <Key>
+            <PropertyRef Name="cd_gruni" />
+          </Key>
+          <Property Name="cd_gruni" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nm_gruni" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MicroRegiao">
+          <Key>
+            <PropertyRef Name="cd_microregiao" />
+          </Key>
+          <Property Name="cd_microregiao" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nm_microregiao" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pais">
+          <Key>
+            <PropertyRef Name="cd_pais" />
+          </Key>
+          <Property Name="cd_pais" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nm_pais" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sensor">
+          <Key>
+            <PropertyRef Name="cd_sensor" />
+          </Key>
+          <Property Name="cd_sensor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nm_sensor" Type="varchar" MaxLength="45" />
+          <Property Name="cd_unida" Type="int" Nullable="false" />
+          <Property Name="cd_tpsensor" Type="int" Nullable="false" />
+          <Property Name="cd_ender" Type="int" />
+          <Property Name="tag_sensor" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TipoSensor">
+          <Key>
+            <PropertyRef Name="cd_tpsensor" />
+          </Key>
+          <Property Name="cd_tpsensor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nm_tpsensor" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Unidade">
+          <Key>
+            <PropertyRef Name="cd_unida" />
+          </Key>
+          <Property Name="cd_unida" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cd_gruni" Type="int" Nullable="false" />
+          <Property Name="nm_unida" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="abrv_unida" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <Association Name="cd_bairro">
+          <End Role="Bairro" Type="Self.Bairro" Multiplicity="1" />
+          <End Role="Endereco" Type="Self.Endereco" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bairro">
+              <PropertyRef Name="cd_bairro" />
+            </Principal>
+            <Dependent Role="Endereco">
+              <PropertyRef Name="cd_bairro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="cd_cidade">
+          <End Role="Cidade" Type="Self.Cidade" Multiplicity="1" />
+          <End Role="Bairro" Type="Self.Bairro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cidade">
+              <PropertyRef Name="cd_cidade" />
+            </Principal>
+            <Dependent Role="Bairro">
+              <PropertyRef Name="cd_cidade" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="cd_ender">
+          <End Role="Endereco" Type="Self.Endereco" Multiplicity="0..1" />
+          <End Role="Sensor" Type="Self.Sensor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Endereco">
+              <PropertyRef Name="cd_ender" />
+            </Principal>
+            <Dependent Role="Sensor">
+              <PropertyRef Name="cd_ender" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="cd_estado">
+          <End Role="Estado" Type="Self.Estado" Multiplicity="1" />
+          <End Role="Cidade" Type="Self.Cidade" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estado">
+              <PropertyRef Name="cd_estado" />
+            </Principal>
+            <Dependent Role="Cidade">
+              <PropertyRef Name="cd_estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="cd_gruni">
+          <End Role="Gruni" Type="Self.Gruni" Multiplicity="1" />
+          <End Role="Unidade" Type="Self.Unidade" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gruni">
+              <PropertyRef Name="cd_gruni" />
+            </Principal>
+            <Dependent Role="Unidade">
+              <PropertyRef Name="cd_gruni" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="cd_microregiao">
+          <End Role="MicroRegiao" Type="Self.MicroRegiao" Multiplicity="1" />
+          <End Role="Cidade" Type="Self.Cidade" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MicroRegiao">
+              <PropertyRef Name="cd_microregiao" />
+            </Principal>
+            <Dependent Role="Cidade">
+              <PropertyRef Name="cd_microregiao" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="cd_pais">
+          <End Role="Pais" Type="Self.Pais" Multiplicity="0..1" />
+          <End Role="Estado" Type="Self.Estado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pais">
+              <PropertyRef Name="cd_pais" />
+            </Principal>
+            <Dependent Role="Estado">
+              <PropertyRef Name="cd_pais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="cd_sensor">
+          <End Role="Sensor" Type="Self.Sensor" Multiplicity="1" />
+          <End Role="Dados" Type="Self.Dados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sensor">
+              <PropertyRef Name="cd_sensor" />
+            </Principal>
+            <Dependent Role="Dados">
+              <PropertyRef Name="cd_sensor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="cd_tpsensor">
+          <End Role="TipoSensor" Type="Self.TipoSensor" Multiplicity="1" />
+          <End Role="Sensor" Type="Self.Sensor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoSensor">
+              <PropertyRef Name="cd_tpsensor" />
+            </Principal>
+            <Dependent Role="Sensor">
+              <PropertyRef Name="cd_tpsensor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="cd_unida">
+          <End Role="Unidade" Type="Self.Unidade" Multiplicity="1" />
+          <End Role="Sensor" Type="Self.Sensor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unidade">
+              <PropertyRef Name="cd_unida" />
+            </Principal>
+            <Dependent Role="Sensor">
+              <PropertyRef Name="cd_unida" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SensorMedModelStoreContainer">
+          <EntitySet Name="Bairro" EntityType="Self.Bairro" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cidade" EntityType="Self.Cidade" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Dados" EntityType="Self.Dados" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Endereco" EntityType="Self.Endereco" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Estado" EntityType="Self.Estado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Gruni" EntityType="Self.Gruni" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MicroRegiao" EntityType="Self.MicroRegiao" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pais" EntityType="Self.Pais" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sensor" EntityType="Self.Sensor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoSensor" EntityType="Self.TipoSensor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Unidade" EntityType="Self.Unidade" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="cd_bairro" Association="Self.cd_bairro">
+            <End Role="Bairro" EntitySet="Bairro" />
+            <End Role="Endereco" EntitySet="Endereco" />
+          </AssociationSet>
+          <AssociationSet Name="cd_cidade" Association="Self.cd_cidade">
+            <End Role="Cidade" EntitySet="Cidade" />
+            <End Role="Bairro" EntitySet="Bairro" />
+          </AssociationSet>
+          <AssociationSet Name="cd_ender" Association="Self.cd_ender">
+            <End Role="Endereco" EntitySet="Endereco" />
+            <End Role="Sensor" EntitySet="Sensor" />
+          </AssociationSet>
+          <AssociationSet Name="cd_estado" Association="Self.cd_estado">
+            <End Role="Estado" EntitySet="Estado" />
+            <End Role="Cidade" EntitySet="Cidade" />
+          </AssociationSet>
+          <AssociationSet Name="cd_gruni" Association="Self.cd_gruni">
+            <End Role="Gruni" EntitySet="Gruni" />
+            <End Role="Unidade" EntitySet="Unidade" />
+          </AssociationSet>
+          <AssociationSet Name="cd_microregiao" Association="Self.cd_microregiao">
+            <End Role="MicroRegiao" EntitySet="MicroRegiao" />
+            <End Role="Cidade" EntitySet="Cidade" />
+          </AssociationSet>
+          <AssociationSet Name="cd_pais" Association="Self.cd_pais">
+            <End Role="Pais" EntitySet="Pais" />
+            <End Role="Estado" EntitySet="Estado" />
+          </AssociationSet>
+          <AssociationSet Name="cd_sensor" Association="Self.cd_sensor">
+            <End Role="Sensor" EntitySet="Sensor" />
+            <End Role="Dados" EntitySet="Dados" />
+          </AssociationSet>
+          <AssociationSet Name="cd_tpsensor" Association="Self.cd_tpsensor">
+            <End Role="TipoSensor" EntitySet="TipoSensor" />
+            <End Role="Sensor" EntitySet="Sensor" />
+          </AssociationSet>
+          <AssociationSet Name="cd_unida" Association="Self.cd_unida">
+            <End Role="Unidade" EntitySet="Unidade" />
+            <End Role="Sensor" EntitySet="Sensor" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SensorMedModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Bairro">
+          <Key>
+            <PropertyRef Name="cd_bairro" />
+          </Key>
+          <Property Name="cd_bairro" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nm_bairro" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cd_cidade" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Endereco" Relationship="Self.cd_bairro" FromRole="Bairro" ToRole="Endereco" />
+          <NavigationProperty Name="Cidade" Relationship="Self.cd_cidade" FromRole="Bairro" ToRole="Cidade" />
+        </EntityType>
+        <EntityType Name="Cidade">
+          <Key>
+            <PropertyRef Name="cd_cidade" />
+          </Key>
+          <Property Name="cd_cidade" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nm_cidade" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cd_microregiao" Type="Int32" Nullable="false" />
+          <Property Name="cd_estado" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Bairro" Relationship="Self.cd_cidade" FromRole="Cidade" ToRole="Bairro" />
+          <NavigationProperty Name="Estado" Relationship="Self.cd_estado" FromRole="Cidade" ToRole="Estado" />
+          <NavigationProperty Name="MicroRegiao" Relationship="Self.cd_microregiao" FromRole="Cidade" ToRole="MicroRegiao" />
+        </EntityType>
+        <EntityType Name="Dados">
+          <Key>
+            <PropertyRef Name="dt_medicao_dados" />
+          </Key>
+          <Property Name="dt_medicao_dados" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="cd_sensor" Type="Int32" Nullable="false" />
+          <Property Name="vl_medicao_dados" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Sensor" Relationship="Self.cd_sensor" FromRole="Dados" ToRole="Sensor" />
+        </EntityType>
+        <EntityType Name="Endereco">
+          <Key>
+            <PropertyRef Name="cd_ender" />
+          </Key>
+          <Property Name="cd_ender" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nm_ender" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CEP" Type="Int32" />
+          <Property Name="numero" Type="Int32" />
+          <Property Name="descricao" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="cd_bairro" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Bairro" Relationship="Self.cd_bairro" FromRole="Endereco" ToRole="Bairro" />
+          <NavigationProperty Name="Sensor" Relationship="Self.cd_ender" FromRole="Endereco" ToRole="Sensor" />
+        </EntityType>
+        <EntityType Name="Estado">
+          <Key>
+            <PropertyRef Name="cd_estado" />
+          </Key>
+          <Property Name="cd_estado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nm_estado" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="cd_pais" Type="Int32" />
+          <NavigationProperty Name="Cidade" Relationship="Self.cd_estado" FromRole="Estado" ToRole="Cidade" />
+          <NavigationProperty Name="Pais" Relationship="Self.cd_pais" FromRole="Estado" ToRole="Pais" />
+        </EntityType>
+        <EntityType Name="Gruni">
+          <Key>
+            <PropertyRef Name="cd_gruni" />
+          </Key>
+          <Property Name="cd_gruni" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nm_gruni" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Unidade" Relationship="Self.cd_gruni" FromRole="Gruni" ToRole="Unidade" />
+        </EntityType>
+        <EntityType Name="MicroRegiao">
+          <Key>
+            <PropertyRef Name="cd_microregiao" />
+          </Key>
+          <Property Name="cd_microregiao" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nm_microregiao" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Cidade" Relationship="Self.cd_microregiao" FromRole="MicroRegiao" ToRole="Cidade" />
+        </EntityType>
+        <EntityType Name="Pais">
+          <Key>
+            <PropertyRef Name="cd_pais" />
+          </Key>
+          <Property Name="cd_pais" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nm_pais" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Estado" Relationship="Self.cd_pais" FromRole="Pais" ToRole="Estado" />
+        </EntityType>
+        <EntityType Name="Sensor">
+          <Key>
+            <PropertyRef Name="cd_sensor" />
+          </Key>
+          <Property Name="cd_sensor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nm_sensor" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="cd_unida" Type="Int32" Nullable="false" />
+          <Property Name="cd_tpsensor" Type="Int32" Nullable="false" />
+          <Property Name="cd_ender" Type="Int32" />
+          <Property Name="tag_sensor" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Dados" Relationship="Self.cd_sensor" FromRole="Sensor" ToRole="Dados" />
+          <NavigationProperty Name="Endereco" Relationship="Self.cd_ender" FromRole="Sensor" ToRole="Endereco" />
+          <NavigationProperty Name="TipoSensor" Relationship="Self.cd_tpsensor" FromRole="Sensor" ToRole="TipoSensor" />
+          <NavigationProperty Name="Unidade" Relationship="Self.cd_unida" FromRole="Sensor" ToRole="Unidade" />
+        </EntityType>
+        <EntityType Name="TipoSensor">
+          <Key>
+            <PropertyRef Name="cd_tpsensor" />
+          </Key>
+          <Property Name="cd_tpsensor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nm_tpsensor" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Sensor" Relationship="Self.cd_tpsensor" FromRole="TipoSensor" ToRole="Sensor" />
+        </EntityType>
+        <EntityType Name="Unidade">
+          <Key>
+            <PropertyRef Name="cd_unida" />
+          </Key>
+          <Property Name="cd_unida" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cd_gruni" Type="Int32" Nullable="false" />
+          <Property Name="nm_unida" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="abrv_unida" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Gruni" Relationship="Self.cd_gruni" FromRole="Unidade" ToRole="Gruni" />
+          <NavigationProperty Name="Sensor" Relationship="Self.cd_unida" FromRole="Unidade" ToRole="Sensor" />
+        </EntityType>
+        <Association Name="cd_bairro">
+          <End Role="Bairro" Type="Self.Bairro" Multiplicity="1" />
+          <End Role="Endereco" Type="Self.Endereco" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bairro">
+              <PropertyRef Name="cd_bairro" />
+            </Principal>
+            <Dependent Role="Endereco">
+              <PropertyRef Name="cd_bairro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="cd_cidade">
+          <End Role="Cidade" Type="Self.Cidade" Multiplicity="1" />
+          <End Role="Bairro" Type="Self.Bairro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cidade">
+              <PropertyRef Name="cd_cidade" />
+            </Principal>
+            <Dependent Role="Bairro">
+              <PropertyRef Name="cd_cidade" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="cd_estado">
+          <End Role="Estado" Type="Self.Estado" Multiplicity="1" />
+          <End Role="Cidade" Type="Self.Cidade" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estado">
+              <PropertyRef Name="cd_estado" />
+            </Principal>
+            <Dependent Role="Cidade">
+              <PropertyRef Name="cd_estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="cd_microregiao">
+          <End Role="MicroRegiao" Type="Self.MicroRegiao" Multiplicity="1" />
+          <End Role="Cidade" Type="Self.Cidade" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MicroRegiao">
+              <PropertyRef Name="cd_microregiao" />
+            </Principal>
+            <Dependent Role="Cidade">
+              <PropertyRef Name="cd_microregiao" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="cd_sensor">
+          <End Role="Sensor" Type="Self.Sensor" Multiplicity="1" />
+          <End Role="Dados" Type="Self.Dados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sensor">
+              <PropertyRef Name="cd_sensor" />
+            </Principal>
+            <Dependent Role="Dados">
+              <PropertyRef Name="cd_sensor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="cd_ender">
+          <End Role="Endereco" Type="Self.Endereco" Multiplicity="0..1" />
+          <End Role="Sensor" Type="Self.Sensor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Endereco">
+              <PropertyRef Name="cd_ender" />
+            </Principal>
+            <Dependent Role="Sensor">
+              <PropertyRef Name="cd_ender" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="cd_pais">
+          <End Role="Pais" Type="Self.Pais" Multiplicity="0..1" />
+          <End Role="Estado" Type="Self.Estado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pais">
+              <PropertyRef Name="cd_pais" />
+            </Principal>
+            <Dependent Role="Estado">
+              <PropertyRef Name="cd_pais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="cd_gruni">
+          <End Role="Gruni" Type="Self.Gruni" Multiplicity="1" />
+          <End Role="Unidade" Type="Self.Unidade" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gruni">
+              <PropertyRef Name="cd_gruni" />
+            </Principal>
+            <Dependent Role="Unidade">
+              <PropertyRef Name="cd_gruni" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="cd_tpsensor">
+          <End Role="TipoSensor" Type="Self.TipoSensor" Multiplicity="1" />
+          <End Role="Sensor" Type="Self.Sensor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoSensor">
+              <PropertyRef Name="cd_tpsensor" />
+            </Principal>
+            <Dependent Role="Sensor">
+              <PropertyRef Name="cd_tpsensor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="cd_unida">
+          <End Role="Unidade" Type="Self.Unidade" Multiplicity="1" />
+          <End Role="Sensor" Type="Self.Sensor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unidade">
+              <PropertyRef Name="cd_unida" />
+            </Principal>
+            <Dependent Role="Sensor">
+              <PropertyRef Name="cd_unida" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SensorMedEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Bairro" EntityType="Self.Bairro" />
+          <EntitySet Name="Cidade" EntityType="Self.Cidade" />
+          <EntitySet Name="Dados" EntityType="Self.Dados" />
+          <EntitySet Name="Endereco" EntityType="Self.Endereco" />
+          <EntitySet Name="Estado" EntityType="Self.Estado" />
+          <EntitySet Name="Gruni" EntityType="Self.Gruni" />
+          <EntitySet Name="MicroRegiao" EntityType="Self.MicroRegiao" />
+          <EntitySet Name="Pais" EntityType="Self.Pais" />
+          <EntitySet Name="Sensor" EntityType="Self.Sensor" />
+          <EntitySet Name="TipoSensor" EntityType="Self.TipoSensor" />
+          <EntitySet Name="Unidade" EntityType="Self.Unidade" />
+          <AssociationSet Name="cd_bairro" Association="Self.cd_bairro">
+            <End Role="Bairro" EntitySet="Bairro" />
+            <End Role="Endereco" EntitySet="Endereco" />
+          </AssociationSet>
+          <AssociationSet Name="cd_cidade" Association="Self.cd_cidade">
+            <End Role="Cidade" EntitySet="Cidade" />
+            <End Role="Bairro" EntitySet="Bairro" />
+          </AssociationSet>
+          <AssociationSet Name="cd_estado" Association="Self.cd_estado">
+            <End Role="Estado" EntitySet="Estado" />
+            <End Role="Cidade" EntitySet="Cidade" />
+          </AssociationSet>
+          <AssociationSet Name="cd_microregiao" Association="Self.cd_microregiao">
+            <End Role="MicroRegiao" EntitySet="MicroRegiao" />
+            <End Role="Cidade" EntitySet="Cidade" />
+          </AssociationSet>
+          <AssociationSet Name="cd_sensor" Association="Self.cd_sensor">
+            <End Role="Sensor" EntitySet="Sensor" />
+            <End Role="Dados" EntitySet="Dados" />
+          </AssociationSet>
+          <AssociationSet Name="cd_ender" Association="Self.cd_ender">
+            <End Role="Endereco" EntitySet="Endereco" />
+            <End Role="Sensor" EntitySet="Sensor" />
+          </AssociationSet>
+          <AssociationSet Name="cd_pais" Association="Self.cd_pais">
+            <End Role="Pais" EntitySet="Pais" />
+            <End Role="Estado" EntitySet="Estado" />
+          </AssociationSet>
+          <AssociationSet Name="cd_gruni" Association="Self.cd_gruni">
+            <End Role="Gruni" EntitySet="Gruni" />
+            <End Role="Unidade" EntitySet="Unidade" />
+          </AssociationSet>
+          <AssociationSet Name="cd_tpsensor" Association="Self.cd_tpsensor">
+            <End Role="TipoSensor" EntitySet="TipoSensor" />
+            <End Role="Sensor" EntitySet="Sensor" />
+          </AssociationSet>
+          <AssociationSet Name="cd_unida" Association="Self.cd_unida">
+            <End Role="Unidade" EntitySet="Unidade" />
+            <End Role="Sensor" EntitySet="Sensor" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SensorMedModelStoreContainer" CdmEntityContainer="SensorMedEntities">
+          <EntitySetMapping Name="Bairro">
+            <EntityTypeMapping TypeName="SensorMedModel.Bairro">
+              <MappingFragment StoreEntitySet="Bairro">
+                <ScalarProperty Name="cd_bairro" ColumnName="cd_bairro" />
+                <ScalarProperty Name="nm_bairro" ColumnName="nm_bairro" />
+                <ScalarProperty Name="cd_cidade" ColumnName="cd_cidade" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cidade">
+            <EntityTypeMapping TypeName="SensorMedModel.Cidade">
+              <MappingFragment StoreEntitySet="Cidade">
+                <ScalarProperty Name="cd_cidade" ColumnName="cd_cidade" />
+                <ScalarProperty Name="nm_cidade" ColumnName="nm_cidade" />
+                <ScalarProperty Name="cd_microregiao" ColumnName="cd_microregiao" />
+                <ScalarProperty Name="cd_estado" ColumnName="cd_estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Dados">
+            <EntityTypeMapping TypeName="SensorMedModel.Dados">
+              <MappingFragment StoreEntitySet="Dados">
+                <ScalarProperty Name="dt_medicao_dados" ColumnName="dt_medicao_dados" />
+                <ScalarProperty Name="cd_sensor" ColumnName="cd_sensor" />
+                <ScalarProperty Name="vl_medicao_dados" ColumnName="vl_medicao_dados" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Endereco">
+            <EntityTypeMapping TypeName="SensorMedModel.Endereco">
+              <MappingFragment StoreEntitySet="Endereco">
+                <ScalarProperty Name="cd_ender" ColumnName="cd_ender" />
+                <ScalarProperty Name="nm_ender" ColumnName="nm_ender" />
+                <ScalarProperty Name="CEP" ColumnName="CEP" />
+                <ScalarProperty Name="numero" ColumnName="numero" />
+                <ScalarProperty Name="descricao" ColumnName="descricao" />
+                <ScalarProperty Name="cd_bairro" ColumnName="cd_bairro" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Estado">
+            <EntityTypeMapping TypeName="SensorMedModel.Estado">
+              <MappingFragment StoreEntitySet="Estado">
+                <ScalarProperty Name="cd_estado" ColumnName="cd_estado" />
+                <ScalarProperty Name="nm_estado" ColumnName="nm_estado" />
+                <ScalarProperty Name="cd_pais" ColumnName="cd_pais" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Gruni">
+            <EntityTypeMapping TypeName="SensorMedModel.Gruni">
+              <MappingFragment StoreEntitySet="Gruni">
+                <ScalarProperty Name="cd_gruni" ColumnName="cd_gruni" />
+                <ScalarProperty Name="nm_gruni" ColumnName="nm_gruni" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MicroRegiao">
+            <EntityTypeMapping TypeName="SensorMedModel.MicroRegiao">
+              <MappingFragment StoreEntitySet="MicroRegiao">
+                <ScalarProperty Name="cd_microregiao" ColumnName="cd_microregiao" />
+                <ScalarProperty Name="nm_microregiao" ColumnName="nm_microregiao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pais">
+            <EntityTypeMapping TypeName="SensorMedModel.Pais">
+              <MappingFragment StoreEntitySet="Pais">
+                <ScalarProperty Name="cd_pais" ColumnName="cd_pais" />
+                <ScalarProperty Name="nm_pais" ColumnName="nm_pais" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sensor">
+            <EntityTypeMapping TypeName="SensorMedModel.Sensor">
+              <MappingFragment StoreEntitySet="Sensor">
+                <ScalarProperty Name="cd_sensor" ColumnName="cd_sensor" />
+                <ScalarProperty Name="nm_sensor" ColumnName="nm_sensor" />
+                <ScalarProperty Name="cd_unida" ColumnName="cd_unida" />
+                <ScalarProperty Name="cd_tpsensor" ColumnName="cd_tpsensor" />
+                <ScalarProperty Name="cd_ender" ColumnName="cd_ender" />
+                <ScalarProperty Name="tag_sensor" ColumnName="tag_sensor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoSensor">
+            <EntityTypeMapping TypeName="SensorMedModel.TipoSensor">
+              <MappingFragment StoreEntitySet="TipoSensor">
+                <ScalarProperty Name="cd_tpsensor" ColumnName="cd_tpsensor" />
+                <ScalarProperty Name="nm_tpsensor" ColumnName="nm_tpsensor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Unidade">
+            <EntityTypeMapping TypeName="SensorMedModel.Unidade">
+              <MappingFragment StoreEntitySet="Unidade">
+                <ScalarProperty Name="cd_unida" ColumnName="cd_unida" />
+                <ScalarProperty Name="cd_gruni" ColumnName="cd_gruni" />
+                <ScalarProperty Name="nm_unida" ColumnName="nm_unida" />
+                <ScalarProperty Name="abrv_unida" ColumnName="abrv_unida" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -40,7 +40,7 @@ function paisController($scope, $http) {
         res.error(function (data) {
             toastr["error"]("Erro ao excluir o Pais", "SensorMed - Medições de Dados");
         });
-
+        // weika apelfeler
     }
 
     $scope.IncluirPaisDiv = function () {

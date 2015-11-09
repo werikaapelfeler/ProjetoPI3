@@ -207,8 +207,13 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BairroListagemController.cs" />
+    <Compile Include="Controllers\CidadeListagemController.cs" />
+    <Compile Include="Controllers\EnderecoListagemController.cs" />
+    <Compile Include="Controllers\EstadoListagemController.cs" />
     <Compile Include="Controllers\GruniListagemController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MicroRegiaoListagemController.cs" />
     <Compile Include="Controllers\PaisListagemController.cs" />
     <Compile Include="Controllers\Sensores\BairroswebAPIController.cs" />
     <Compile Include="Controllers\Sensores\CidadesWebAPIController.cs" />
@@ -220,6 +225,8 @@
     <Compile Include="Controllers\Sensores\PaisWebAPIController.cs" />
     <Compile Include="Controllers\Sensores\TipoSensorWebAPIController.cs" />
     <Compile Include="Controllers\Sensores\UnidadesWebAPIController.cs" />
+    <Compile Include="Controllers\SensorListagemController.cs" />
+    <Compile Include="Controllers\TipoSensorListagemController.cs" />
     <Compile Include="Controllers\UnidadeListagemController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -1144,6 +1151,13 @@
     <Content Include="Views\GruniListagem\Index.cshtml" />
     <Content Include="Views\PaisListagem\Index.cshtml" />
     <Content Include="Views\UnidadeListagem\Index.cshtml" />
+    <Content Include="Views\BairroListagem\Index.cshtml" />
+    <Content Include="Views\CidadeListagem\Index.cshtml" />
+    <Content Include="Views\EnderecoListagem\Index.cshtml" />
+    <Content Include="Views\EstadoListagem\Index.cshtml" />
+    <Content Include="Views\MicroRegiaoListagem\Index.cshtml" />
+    <Content Include="Views\SensorListagem\Index.cshtml" />
+    <Content Include="Views\TipoSensorListagem\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

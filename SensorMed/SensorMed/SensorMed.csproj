@@ -207,7 +207,20 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\GruniListagemController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PaisListagemController.cs" />
+    <Compile Include="Controllers\Sensores\BairroswebAPIController.cs" />
+    <Compile Include="Controllers\Sensores\CidadesWebAPIController.cs" />
+    <Compile Include="Controllers\Sensores\DadosWebAPIController.cs" />
+    <Compile Include="Controllers\Sensores\EnderecosWebAPIController.cs" />
+    <Compile Include="Controllers\Sensores\EstadosWebAPIController.cs" />
+    <Compile Include="Controllers\Sensores\GrunisWebAPIController.cs" />
+    <Compile Include="Controllers\Sensores\MicroRegioesWebAPIController.cs" />
+    <Compile Include="Controllers\Sensores\PaisWebAPIController.cs" />
+    <Compile Include="Controllers\Sensores\TipoSensorWebAPIController.cs" />
+    <Compile Include="Controllers\Sensores\UnidadesWebAPIController.cs" />
+    <Compile Include="Controllers\UnidadeListagemController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -311,6 +324,7 @@
     <Content Include="Scripts\angular-touch.min.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
+    <Content Include="Scripts\AngularAPP\Controller.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\HelpPage\Views\Web.config" />
@@ -1127,6 +1141,9 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Scripts\version.json" />
+    <Content Include="Views\GruniListagem\Index.cshtml" />
+    <Content Include="Views\PaisListagem\Index.cshtml" />
+    <Content Include="Views\UnidadeListagem\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

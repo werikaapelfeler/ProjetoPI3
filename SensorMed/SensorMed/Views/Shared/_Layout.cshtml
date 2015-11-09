@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html>
+<html data-ng-app="app">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
@@ -16,12 +16,43 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                <a class="navbar-brand" rel="home" href="#" title="Buy Sell Rent Everyting">
+                    <img style="max-width:100px; margin-top: -7px;"
+                         src="/img/transparent-white-logo.png">
+                </a>
             </div>
+
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
-                    <li>@Html.ActionLink("API", "Index", "Help", new { area = "" }, null)</li>
+                    <li>@Html.ActionLink("Relatórios", "Index", "Home", new { area = "" }, null)</li>
+                    <li>@Html.ActionLink("Importação", "Index", "Home", new { area = "" }, null)</li>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cadastros <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Grupos de Unidades", "Index", "GruniListagem", new { area = "" }, null)</li>
+                            <li role="separator" class="divider"></li>
+                            <li>@Html.ActionLink("Unidades", "Index", "UnidadeListagem", new { area = "" }, null)</li>
+                            <li role="separator" class="divider"></li>
+                            <li>@Html.ActionLink("Tipos de Sensores", "Index", "TipoSensorListagem", new { area = "" }, null)</li>
+                            <li role="separator" class="divider"></li>
+                            <li>@Html.ActionLink("Sensores", "Index", "SensorListagem", new { area = "" }, null)</li>
+                            <li role="separator" class="divider"></li>
+                            <li>@Html.ActionLink("Paises", "Index", "PaisListagem", new { area = "" }, null)</li>
+                            <li role="separator" class="divider"></li>
+                            <li>@Html.ActionLink("Estados", "Index", "EstadoListagem", new { area = "" }, null)</li>
+                            <li role="separator" class="divider"></li>
+                            <li>@Html.ActionLink("Cidades", "Index", "CidadeListagem", new { area = "" }, null)</li>
+                            <li role="separator" class="divider"></li>
+                            <li>@Html.ActionLink("Bairros", "Index", "BairroListagem", new { area = "" }, null)</li>
+                            <li role="separator" class="divider"></li>
+                            <li>@Html.ActionLink("Endereços", "Index", "EnderecoListagem", new { area = "" }, null)</li>
+                            <li role="separator" class="divider"></li>
+                            <li>@Html.ActionLink("Micros Regiões", "Index", "MicroRegiaoListagem", new { area = "" }, null)</li>
+                            <li role="separator" class="divider"></li>
+                            <li>@Html.ActionLink("Usuários", "Index", "UsuarioListagem", new { area = "" }, null)</li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -36,6 +67,16 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    <script src="~/Scripts/angular.min.js"></script>
+    <script src="~/Scripts/AngularAPP/Controller.js"></script>
+    <script src="~/Scripts/jquery-2.1.4.js"></script>
+    <script src="~/Scripts/jquery-2.1.4.min.js"></script>
+    <script src="~/Scripts/toastr.min.js"></script>
+    <script src="~/Scripts/toastr.js"></script>
+    <script src="~/Scripts/angular-toastr.js"></script>
+    <script src="~/Scripts/angular-toastr.min.js"></script>
     @RenderSection("scripts", required: false)
+
+
 </body>
 </html>

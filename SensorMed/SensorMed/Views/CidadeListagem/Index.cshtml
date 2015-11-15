@@ -1,99 +1,167 @@
 ﻿
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Cidade";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h3 class="page-header">Cidades</h3>
 
-<ul class="nav nav-tabs">
-    <li class="active"><a data-toggle="tab" href="#home">Pesquisas</a></li>
-    <li><a data-toggle="tab" href="#menu1">Cadastros</a></li>
-</ul>
+<!--<div class="tab-content" data-ng-controller="estadoController">-->
+<div data-ng-controller="estadoController">
 
-<div class="tab-content">
-    <div id="home" class="tab-pane fade in active">
-        <hr />
-        <div id="top" class="row">
-            <div class="col-md-3">
-                <div class="input-group h2">
-                    <input name="data[search]" class="form-control" id="search" type="text" placeholder="Pesquisar Itens">
-                    <span class="input-group-btn">
-                        <button class="btn btn-primary" type="submit">
-                            <span class="glyphicon glyphicon-search"></span>
-                        </button>
-                    </span>
-                </div>
+    <div id="top" class="row">
+        <div class="col-md-3">
+            <div class="input-group h2">
+                <input name="data[search]" class="form-control" id="search" type="text" placeholder="Pesquisar Itens" ng-model="criteria">
+                <span class="input-group-btn">
+                    <button class="btn btn-primary" type="submit">
+                        <span class="glyphicon glyphicon-search"></span>
+                    </button>
+                </span>
+            </div>
+        </div>
+
+        <div class="col-md-9">
+            <span ng-click="ClearFields()" class="btn btn-primary pull-right h2" data-toggle="modal" data-target="#myModalAdd"> Novo Item</span>
+        </div>
+    </div> <!-- /#top -->
+    <hr />
+
+    <!-- ng-controller-->
+    <div class="panel panel-default">
+        <div class="row">
+            <div class="col-md-13">
+                <strong>{{erro}}</strong>
+            </div>
+        </div>
+
+        <div class="col-md-20">
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover">
+                    <tr>
+                        <td><b>Nome</b></td>
+                        <td><b>Pais</b></td>
+                        <td><b>Ação</b></td>
+                    </tr>
+                    <tr data-ng-repeat="Estado in listaestado | filter:criteria">
+                        <td class="text-left col-lg-5">
+                            {{ Estado.nm_estado }}
+                        </td>
+                        <td class="text-left col-lg-5">
+                            <span ng-repeat="Pais in NomePais" ng-if="Pais.cd_pais == Estado.cd_pais">
+                                {{ Pais.nm_pais }}
+                            </span>
+                        </td>
+                        <td>
+                            <div class="btn-group btn-group-justified">
+                                <span ng-click="obterEstadoPorId(Estado)" class="btn btn-info" data-toggle="modal" data-target="#myModal"> Alterar</span>
+                                <span ng-click="deleteestado(Estado)" class="btn btn-danger"> Excluir</span>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
             </div>
 
-            <!--<div class="col-md-9">
-                <a href="add.html" class="btn btn-primary pull-right h2">Novo Item</a>
-            </div>-->
-        </div> <!-- /#top -->
-        <hr />
+            <div id="myModalAdd" class="modal fade" role="dialog">
+                <div class="modal-dialog">
 
-        <div data-ng-controller="unidadeController">
-            <div class="panel panel-default">
-                <div class="row">
-                    <div class="col-md-13">
-                        <strong>{{erro}}</strong>
-                    </div>
-                </div>
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Cadastro de Estado</h4>
+                        </div>
+                        <div class="modal-body">
 
-                <div class="col-md-20">
-                    <div class="table-responsive">
-                        <table class="table table-bordered table-hover">
-                            <tr data-ng-repeat="Unidade in listaunidade">
-                                <td class="text-left col-lg-10">
-                                    {{ Unidade.nm_unida }}
-                                </td>
-                                <td>
-                                    <div class="btn-group btn-group-justified">
-                                        <span ng-click="PutTipoSensor(TipoSensor.id_cliente, TipoSensor)" class="btn btn-info"> Alterar</span>
-                                        <span ng-click="Deletecliente(TipoSensor.id_cliente)" class="btn btn-danger"> Excluir</span>
+                            <form class="form-horizontal" role="form" ng-submit="postestado()">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2" for="email">Estado:</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="EstadoAdd" placeholder="Informe o Estado" size="80" name="nm_estado"
+                                               ng-model="nm_estado">
                                     </div>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2" for="pwd">Pais:</label>
+                                    <div class="col-sm-10">
+                                        <select class="form-control" id="PaisAdd" ng-model="myOption"
+                                                ng-options="value.cd_pais as value.nm_pais for value in myOptions ">
+                                            <option>--</option>
+                                        </select>
 
+                                        <div>
+                                            ng-model value: {{myOption}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+                        <div class="modal-footer">
+                            <span ng-click="postestado(myOption)" class="btn btn-primary" data-dismiss="modal"> Salvar</span>
+                            <button type="button" class="btn btn-warning" data-dismiss="modal">Cancelar</button>
+                        </div>
+                    </div>
+
+                </div>
             </div>
 
-            <div id="bottom" class="row">
-                <div class="col-md-12">
+            <div id="myModal" class="modal fade" role="dialog">
+                <div class="modal-dialog">
 
-                    <ul class="pagination">
-                        <li class="disabled"><a>&lt; Anterior</a></li>
-                        <li class="disabled"><a>1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li class="next"><a href="#" rel="next">Próximo &gt;</a></li>
-                    </ul><!-- /.pagination -->
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Alteração do Estado</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form class="form-horizontal" role="form">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2" for="email">Estado:</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="EstadoAdd" placeholder="Informe o Estado" size="80" name="nm_estado"
+                                               ng-model="nm_estado">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2" for="pwd">Pais:</label>
+                                    <div class="col-sm-10">
+                                        <select class="form-control" id="PaisAdd" ng-model="cd_pais"
+                                                ng-options="value.cd_pais as value.nm_pais for value in myOptions ">
+                                            <option>--</option>
+                                        </select>
+
+                                        <div>
+                                            ng-model value: {{myOption}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <span ng-click="atualizaestado()" class="btn btn-primary" data-dismiss="modal"> Salvar</span>
+                            <button type="button" class="btn btn-warning" data-dismiss="modal">Cancelar</button>
+                        </div>
+                    </div>
 
                 </div>
-            </div> <!-- /#bottom -->
+            </div>
         </div>
-    </div>
-    <div id="menu1" class="tab-pane fade">
-        <div class="container" ng-controller="unidadeAddController">
-            <hr />
-            <form class="form-inline" role="form" ng-submit="postgruni()">
-                <div class="form-group input-group h6">
-                    <input type="text" class="form-control" id="PaisAdd" placeholder="Informe a cidade" size="80" name="nm_gruni"
-                           ng-model="nm_gruni">
-                </div>
-                <div class="btn-group ">
-                    <button type="submit" class="btn btn-primary">Salvar</button>
-                    <button type="submit" class="btn btn-warning">Cancelar</button>
-                </div>
 
-            </form>
+    </div>
+
+    <div id="bottom" class="row">
+        <div class="col-md-12">
+
+            <ul class="pagination">
+                <li class="disabled"><a>&lt; Anterior</a></li>
+                <li class="disabled"><a>1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li class="next"><a href="#" rel="next">Próximo &gt;</a></li>
+            </ul><!-- /.pagination -->
 
         </div>
-    </div>
+    </div> <!-- /#bottom -->
 </div>
-
-
-
-

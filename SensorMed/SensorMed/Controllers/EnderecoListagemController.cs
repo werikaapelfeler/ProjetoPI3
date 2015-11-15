@@ -11,6 +11,7 @@ namespace SensorMed.Controllers
         // GET: EnderecoListagem
         public ActionResult Index()
         {
+            ViewBag.Title = "Endereços";
             return View();
         }
     }

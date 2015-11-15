@@ -11,6 +11,7 @@ namespace SensorMed.Controllers
         // GET: GruniListagem
         public ActionResult Index()
         {
+            ViewBag.Title = "Grupo de Unidades";
             return View();
         }
     }

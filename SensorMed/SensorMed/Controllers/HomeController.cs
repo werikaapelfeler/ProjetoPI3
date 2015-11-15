@@ -10,7 +10,7 @@ namespace SensorMed.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Title = "Home Page";
+            ViewBag.Title = "SensorMed";
 
             return View();
         }

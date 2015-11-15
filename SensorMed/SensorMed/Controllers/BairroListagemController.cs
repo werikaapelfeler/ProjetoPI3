@@ -11,6 +11,7 @@ namespace SensorMed.Controllers
         // GET: BairroListagem
         public ActionResult Index()
         {
+            ViewBag.Title = "Bairros";
             return View();
         }
     }

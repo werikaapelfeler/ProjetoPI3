@@ -11,6 +11,7 @@ namespace SensorMed.Controllers
         // GET: MicroRegiaoListagem
         public ActionResult Index()
         {
+            ViewBag.Title = "Micros Regiões";
             return View();
         }
     }

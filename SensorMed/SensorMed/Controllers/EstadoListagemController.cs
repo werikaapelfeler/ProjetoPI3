@@ -11,6 +11,7 @@ namespace SensorMed.Controllers
         // GET: EstadoListagem
         public ActionResult Index()
         {
+            ViewBag.Title = "Estados";
             return View();
         }
     }

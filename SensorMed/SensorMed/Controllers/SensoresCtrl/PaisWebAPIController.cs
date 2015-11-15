@@ -113,7 +113,22 @@ namespace SensorMed.Controllers.Sensor
             }
 
             db.Pais.Remove(pais);
-            db.SaveChanges();
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (DbEntityValidationException db)
+            {
+                foreach (var validationErrors in db.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        Trace.TraceInformation("Property: {0} Error: {1}",
+                                                validationError.PropertyName,
+                                                validationError.ErrorMessage);
+                    }
+                }
+            }
 
             return Ok(pais);
         }

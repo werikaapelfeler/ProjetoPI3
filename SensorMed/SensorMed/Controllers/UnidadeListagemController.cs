@@ -11,6 +11,7 @@ namespace SensorMed.Controllers
         // GET: UnidadeListagem
         public ActionResult Index()
         {
+            ViewBag.Title = "Unidades";
             return View();
         }
     }

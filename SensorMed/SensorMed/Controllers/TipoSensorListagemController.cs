@@ -11,6 +11,7 @@ namespace SensorMed.Controllers
         // GET: TipoSensorListagem
         public ActionResult Index()
         {
+            ViewBag.Title = "Tipos de Sensores";
             return View();
         }
     }

@@ -290,6 +290,13 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Themes\images\01.jpg" />
+    <Content Include="App_Themes\images\03.jpg" />
+    <Content Include="App_Themes\images\04.jpg" />
+    <Content Include="App_Themes\images\a11.png" />
+    <Content Include="App_Themes\images\a21.png" />
+    <Content Include="App_Themes\images\b05.png" />
+    <Content Include="App_Themes\images\b21.png" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />

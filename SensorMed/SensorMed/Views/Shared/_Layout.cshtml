@@ -8,8 +8,7 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-
-   <!-- <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -17,115 +16,53 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" rel="home" href="#" title="Buy Sell Rent Everyting">
-                    <img style="max-width:100px; margin-top: -7px;"
-                         src="/img/transparent-white-logo.png">
-                </a>
             </div>
 
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="#"><span class="glyphicon glyphicon-stats"></span> Relatórios</a></li>       
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                    <li>@Html.ActionLink("Relatórios", "Index", "Home", new { area = "" }, null)</li>
+                    <li>@Html.ActionLink("Importação", "Index", "Home", new { area = "" }, null)</li>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cadastros <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Grupos de Unidades", "Index", "GruniListagem", new { area = "" }, null)</li>
+                            <li>@Html.ActionLink("Unidades", "Index", "UnidadeListagem", new { area = "" }, null)</li>
+                            <li>@Html.ActionLink("Tipos de Sensores", "Index", "TipoSensorListagem", new { area = "" }, null)</li>
+                            <li>@Html.ActionLink("Sensores", "Index", "SensorListagem", new { area = "" }, null)</li>
+                            <li>@Html.ActionLink("Paises", "Index", "PaisListagem", new { area = "" }, null)</li>
+                            <li>@Html.ActionLink("Estados", "Index", "EstadoListagem", new { area = "" }, null)</li>
+                            <li>@Html.ActionLink("Cidades", "Index", "CidadeListagem", new { area = "" }, null)</li>
+                            <li>@Html.ActionLink("Bairros", "Index", "BairroListagem", new { area = "" }, null)</li>
+                            <li>@Html.ActionLink("Endereços", "Index", "EnderecoListagem", new { area = "" }, null)</li>
+                            <li>@Html.ActionLink("Micros Regiões", "Index", "MicroRegiaoListagem", new { area = "" }, null)</li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </div>
-    </div>-->
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
 
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    <script src="~/Scripts/angular.min.js"></script>
+    <script src="~/Scripts/AngularAPP/Controller.js"></script>
+    <script src="~/Scripts/jquery-2.1.4.js"></script>
+    <script src="~/Scripts/jquery-2.1.4.min.js"></script>
+    <script src="~/Scripts/toastr.min.js"></script>
+    <script src="~/Scripts/toastr.js"></script>
+    <script src="~/Scripts/angular-toastr.js"></script>
+    <script src="~/Scripts/angular-toastr.min.js"></script>
+    @RenderSection("scripts", required: false)
 
-            <div class="row affix-row">
-                <div class="col-sm-3 col-md-2 affix-sidebar">
-                    <div class="sidebar-nav">
-                        <div class="navbar navbar-default" role="navigation">
-                            <div class="navbar-header">
-                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-navbar-collapse">
-                                    <span class="sr-only">Toggle navigation</span>
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                </button>
-                                <span class="visible-xs navbar-brand">Medição de Dados</span>
-                            </div>
-                            <div class="navbar-collapse collapse sidebar-navbar-collapse">
-                                <ul class="nav navbar-nav" id="sidenav01">
-                                    <li class="active">
-                                        <a href="#" data-toggle="collapse" data-target="#toggleDemo0" data-parent="#sidenav01" class="collapsed">
-                                            <h4>
-                                                SensorMed
-                                                <br>
-                                            </h4>
-                                        </a>
-                                    </li>
-                                    <li><a href="#"><span class="glyphicon glyphicon-stats"></span> Relatórios </a></li>
-                                    <li><a href="#"><span class="glyphicon glyphicon-folder-open"></span> Importação </a></li>
-                                    <li>
-                                        <a href="#" data-toggle="collapse" data-target="#toggleDemo" data-parent="#sidenav01" class="collapsed">
-                                            <span class="glyphicon glyphicon-plus"></span> Cadastros <span class="caret pull-right"></span>
-                                        </a>
-                                        <div class="collapse" id="toggleDemo" style="height: 0px;">
-                                            <ul class="nav nav-list">
-                                                <li class="active">
-                                                    <a href="#" data-toggle="collapse" data-target="#toggleDemo2" data-parent="#sidenav01" class="collapsed">
-                                                        <span class="glyphicon glyphicon-wrench"></span> Sensores <span class="caret pull-right"></span>
-                                                    </a>
-                                                    <div class="collapse" id="toggleDemo2" style="height: 0px;">
-                                                        <ul class="nav nav-list">
-                                                            <li>@Html.ActionLink("Sensores", "Index", "SensorListagem", new { area = "" }, null)</li>
-                                                            <li>@Html.ActionLink("Tipos de Sensores", "Index", "TipoSensorListagem", new { area = "" }, null)</li>
-                                                            <li>@Html.ActionLink("Unidades", "Index", "UnidadeListagem", new { area = "" }, null)</li>
-                                                            <li>@Html.ActionLink("Grupos de Unidades", "Index", "GruniListagem", new { area = "" }, null)</li>
-                                                        </ul>
-                                                    </div>
-
-                                                    <a href="#" data-toggle="collapse" data-target="#toggleDemo3" data-parent="#sidenav01" class="collapsed">
-                                                        <span class="glyphicon glyphicon-map-marker"></span> Endereços <span class="caret pull-right"></span>
-                                                    </a>
-                                                    <div class="collapse" id="toggleDemo3" style="height: 0px;">
-                                                        <ul class="nav nav-list">
-                                                            <li>@Html.ActionLink("Logradouro", "Index", "EnderecoListagem", new { area = "" }, null)</li>
-                                                            <li>@Html.ActionLink("Bairros", "Index", "BairroListagem", new { area = "" }, null)</li>
-                                                            <li>@Html.ActionLink("Cidades", "Index", "CidadeListagem", new { area = "" }, null)</li>
-                                                            <li>@Html.ActionLink("Micros Regiões", "Index", "MicroRegiaoListagem", new { area = "" }, null)</li>
-                                                            <li>@Html.ActionLink("Estados", "Index", "EstadoListagem", new { area = "" }, null)</li>
-                                                            <li>@Html.ActionLink("Paises", "Index", "PaisListagem", new { area = "" }, null)</li>
-                                                        </ul>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            <div class="col-sm-9 col-md-10 affix-content">
-                <div class="container">
-                    <div class="container body-content">
-                        @RenderBody()
-                        <hr />
-                        <footer>
-                            <p>&copy; @DateTime.Now.Year - SensorMed - Medição de Dados</p>
-                        </footer>
-                    </div>
-                </div>
-            </div>
-                </div>
-
-
-            @Scripts.Render("~/bundles/jquery")
-            @Scripts.Render("~/bundles/bootstrap")
-            <link href="~/Content/estilo.css" rel="stylesheet" />
-            <script src="~/Scripts/angular.js"></script>
-            <script src="~/Scripts/angular.min.js"></script>
-            <script src="~/Scripts/AngularAPP/Controller.js"></script>
-            <script src="~/Scripts/jquery-2.1.4.js"></script>
-            <script src="~/Scripts/jquery-2.1.4.min.js"></script>
-            <script src="~/Scripts/highcharts/4.1.5/highcharts.js"></script>
-            @RenderSection("scripts", required: false)
 
 </body>
 </html>
+

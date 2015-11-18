@@ -26,6 +26,7 @@ namespace SensorMed.Controllers.Sensor
         [ResponseType(typeof(Cidade))]
         public IHttpActionResult GetCidade(int id)
         {
+
             Cidade cidade = db.Cidade.Find(id);
             if (cidade == null)
             {

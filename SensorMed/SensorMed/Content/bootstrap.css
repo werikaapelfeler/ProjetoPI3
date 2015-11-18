@@ -4501,8 +4501,8 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .navbar-inverse {
-  /*/background-color: #222222;*/
-  background-color: #49C5BF;
+  background-color: #222222;
+  /*background-color: #49C5BF;*/
   border-color: #080808;
 }
 
@@ -4520,8 +4520,8 @@ textarea.input-group-sm > .input-group-btn > .btn {
   color: #999999;
 }
 
-.navbar-inverse .navbar-nav > li > a {
-  color: #060606;
+.navbar-inverse .navbar-nav > li > a { 
+  color: #ffffff;
 }
 
 .navbar-inverse .navbar-nav > li > a:hover,

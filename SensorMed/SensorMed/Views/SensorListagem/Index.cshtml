@@ -7,7 +7,7 @@
 <h3 class="page-header">Sensores</h3>
 
 <!--<div class="tab-content" data-ng-controller="estadoController">-->
-<div data-ng-controller="estadoController">
+<div data-ng-controller="sensorController">
 
     <div id="top" class="row">
         <div class="col-md-3">
@@ -40,22 +40,38 @@
                 <table class="table table-bordered table-hover">
                     <tr>
                         <td><b>Nome</b></td>
-                        <td><b>Pais</b></td>
+                        <td><b>TAG</b></td>
+                        <td><b>Tipo</b></td>
+                        <td><b>Unidade</b></td>
+                        <td><b>Endereço</b></td>
                         <td><b>Ação</b></td>
                     </tr>
-                    <tr data-ng-repeat="Estado in listaestado | filter:criteria">
-                        <td class="text-left col-lg-5">
-                            {{ Estado.nm_estado }}
+                    <tr data-ng-repeat="Sensor in listasensores | filter:criteria">
+                        <td class="text-left col-lg-2">
+                            {{ Sensor.nm_sensor }}
                         </td>
-                        <td class="text-left col-lg-5">
-                            <span ng-repeat="Pais in NomePais" ng-if="Pais.cd_pais == Estado.cd_pais">
-                                {{ Pais.nm_pais }}
+                        <td class="text-left col-lg-2">
+                            {{ Sensor.tag_sensor }}
+                        </td>
+                        <td class="text-left col-lg-2">
+                            <span ng-repeat="TipoSensor in NomeTipoSensor" ng-if="TipoSensor.cd_tpsensor == Sensor.cd_tpsensor">
+                                {{ TipoSensor.nm_tpsensor }}
+                            </span>
+                        </td>
+                        <td class="text-left col-lg-2">
+                            <span ng-repeat="Unidade in NomeUnidade" ng-if="Unidade.cd_unida == Sensor.cd_unida">
+                                {{ Unidade.nm_unida }}
+                            </span>
+                        </td>
+                        <td class="text-left col-lg-2">
+                            <span ng-repeat="Endereco in NomeEndereco" ng-if="Endereco.cd_ender == Sensor.cd_ender">
+                                {{ Endereco.nm_ender }}
                             </span>
                         </td>
                         <td>
                             <div class="btn-group btn-group-justified">
-                                <span ng-click="obterEstadoPorId(Estado)" class="btn btn-info" data-toggle="modal" data-target="#myModal"> Alterar</span>
-                                <span ng-click="deleteestado(Estado)" class="btn btn-danger"> Excluir</span>
+                                <span ng-click="obterSensorPorId(Sensor)" class="btn btn-info" data-toggle="modal" data-target="#myModal"> Alterar</span>
+                                <span ng-click="deletesensor(Sensor)" class="btn btn-danger"> Excluir</span>
                             </div>
                         </td>
                     </tr>
@@ -69,23 +85,30 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">Cadastro de Estado</h4>
+                            <h4 class="modal-title">Cadastro de Sensor</h4>
                         </div>
                         <div class="modal-body">
 
-                            <form class="form-horizontal" role="form" ng-submit="postestado()">
+                            <form class="form-horizontal" role="form">
                                 <div class="form-group">
-                                    <label class="control-label col-sm-2" for="email">Estado:</label>
+                                    <label class="control-label col-sm-2" for="email">Sensor:</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="EstadoAdd" placeholder="Informe o Estado" size="80" name="nm_estado"
-                                               ng-model="nm_estado">
+                                        <input type="text" class="form-control" id="EnderecoAdd" placeholder="Informe o Sensor" size="80" name="nm_sensor"
+                                               ng-model="nm_sensor">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label col-sm-2" for="pwd">Pais:</label>
+                                    <label class="control-label col-sm-2" for="email">TAG:</label>
                                     <div class="col-sm-10">
-                                        <select class="form-control" id="PaisAdd" ng-model="myOption"
-                                                ng-options="value.cd_pais as value.nm_pais for value in myOptions ">
+                                        <input type="text" class="form-control" id="EnderecoAdd" placeholder="Informe a TAG" size="80" name="tag_sensor"
+                                               ng-model="tag_sensor">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2" for="pwd">Tipo:</label>
+                                    <div class="col-sm-10">
+                                        <select class="form-control" id="EnderecoAdd" ng-model="myOption"
+                                                ng-options="value.cd_tpsensor as value.nm_tpsensor for value in myOptions ">
                                             <option>--</option>
                                         </select>
 
@@ -94,11 +117,37 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2" for="pwd">Unidade:</label>
+                                    <div class="col-sm-10">
+                                        <select class="form-control" id="EnderecoAdd" ng-model="myOptionUnidade"
+                                                ng-options="value.cd_unida as value.nm_unida for value in myOptionsUnidade ">
+                                            <option>--</option>
+                                        </select>
+
+                                        <div>
+                                            ng-model value: {{myOptionUnidade}}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2" for="pwd">Endereco:</label>
+                                    <div class="col-sm-10">
+                                        <select class="form-control" id="EnderecoAdd" ng-model="myOptionEndereco"
+                                                ng-options="value.cd_ender as value.nm_ender for value in myOptionsEndereco ">
+                                            <option>--</option>
+                                        </select>
+
+                                        <div>
+                                            ng-model value: {{myOptionEndereco}}
+                                        </div>
+                                    </div>
+                                </div>
                             </form>
 
                         </div>
                         <div class="modal-footer">
-                            <span ng-click="postestado(myOption)" class="btn btn-primary" data-dismiss="modal"> Salvar</span>
+                            <span ng-click="postsensor(myOptionUnidade, myOptionEndereco, myOption)" class="btn btn-primary" data-dismiss="modal"> Salvar</span>
                             <button type="button" class="btn btn-warning" data-dismiss="modal">Cancelar</button>
                         </div>
                     </div>
@@ -113,22 +162,29 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">Alteração do Estado</h4>
+                            <h4 class="modal-title">Alteração do Sensor</h4>
                         </div>
                         <div class="modal-body">
                             <form class="form-horizontal" role="form">
                                 <div class="form-group">
-                                    <label class="control-label col-sm-2" for="email">Estado:</label>
+                                    <label class="control-label col-sm-2" for="email">Sensor:</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="EstadoAdd" placeholder="Informe o Estado" size="80" name="nm_estado"
-                                               ng-model="nm_estado">
+                                        <input type="text" class="form-control" id="EnderecoAdd" placeholder="Informe o Sensor" size="80" name="nm_sensor"
+                                               ng-model="nm_sensor">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label col-sm-2" for="pwd">Pais:</label>
+                                    <label class="control-label col-sm-2" for="email">TAG:</label>
                                     <div class="col-sm-10">
-                                        <select class="form-control" id="PaisAdd" ng-model="cd_pais"
-                                                ng-options="value.cd_pais as value.nm_pais for value in myOptions ">
+                                        <input type="text" class="form-control" id="EnderecoAdd" placeholder="Informe a TAG" size="80" name="tag_sensor"
+                                               ng-model="tag_sensor">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2" for="pwd">Tipo:</label>
+                                    <div class="col-sm-10">
+                                        <select class="form-control" id="EnderecoAdd" ng-model="myOption"
+                                                ng-options="value.cd_tpsensor as value.nm_tpsensor for value in myOptions ">
                                             <option>--</option>
                                         </select>
 
@@ -137,10 +193,36 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2" for="pwd">Unidade:</label>
+                                    <div class="col-sm-10">
+                                        <select class="form-control" id="EnderecoAdd" ng-model="myOptionUnidade"
+                                                ng-options="value.cd_unida as value.nm_unida for value in myOptionsUnidade ">
+                                            <option>--</option>
+                                        </select>
+
+                                        <div>
+                                            ng-model value: {{myOptionUnidade}}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2" for="pwd">Endereco:</label>
+                                    <div class="col-sm-10">
+                                        <select class="form-control" id="EnderecoAdd" ng-model="myOptionEndereco"
+                                                ng-options="value.cd_ender as value.nm_ender for value in myOptionsEndereco ">
+                                            <option>--</option>
+                                        </select>
+
+                                        <div>
+                                            ng-model value: {{myOptionEndereco}}
+                                        </div>
+                                    </div>
+                                </div>
                             </form>
                         </div>
                         <div class="modal-footer">
-                            <span ng-click="atualizaestado()" class="btn btn-primary" data-dismiss="modal"> Salvar</span>
+                            <span ng-click="atualizasensor()" class="btn btn-primary" data-dismiss="modal"> Salvar</span>
                             <button type="button" class="btn btn-warning" data-dismiss="modal">Cancelar</button>
                         </div>
                     </div>

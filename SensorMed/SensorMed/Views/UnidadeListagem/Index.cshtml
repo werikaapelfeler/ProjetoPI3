@@ -8,7 +8,7 @@
 <h3 class="page-header">Unidades de Medidas</h3>
 
 <!--<div class="tab-content" data-ng-controller="estadoController">-->
-<div data-ng-controller="estadoController">
+<div data-ng-controller="unidadeController">
 
     <div id="top" class="row">
         <div class="col-md-3">
@@ -41,22 +41,26 @@
                 <table class="table table-bordered table-hover">
                     <tr>
                         <td><b>Nome</b></td>
-                        <td><b>Pais</b></td>
+                        <td><b>Nome Abrev.</b></td>
+                        <td><b>Grupo de Unidade</b></td>
                         <td><b>Ação</b></td>
                     </tr>
-                    <tr data-ng-repeat="Estado in listaestado | filter:criteria">
-                        <td class="text-left col-lg-5">
-                            {{ Estado.nm_estado }}
+                    <tr data-ng-repeat="Unidade in listaunidade | filter:criteria">
+                        <td class="text-left col-lg-3">
+                            {{ Unidade.nm_unida }}
                         </td>
-                        <td class="text-left col-lg-5">
-                            <span ng-repeat="Pais in NomePais" ng-if="Pais.cd_pais == Estado.cd_pais">
-                                {{ Pais.nm_pais }}
+                        <td class="text-left col-lg-3">
+                            {{ Unidade.abrv_unida }}
+                        </td>
+                        <td class="text-left col-lg-3">
+                            <span ng-repeat="Gruni in NomeGruni" ng-if="Gruni.cd_gruni == Unidade.cd_gruni">
+                                {{ Gruni.nm_gruni }}
                             </span>
                         </td>
                         <td>
                             <div class="btn-group btn-group-justified">
-                                <span ng-click="obterEstadoPorId(Estado)" class="btn btn-info" data-toggle="modal" data-target="#myModal"> Alterar</span>
-                                <span ng-click="deleteestado(Estado)" class="btn btn-danger"> Excluir</span>
+                                <span ng-click="obterUnidadePorId(Unidade)" class="btn btn-info" data-toggle="modal" data-target="#myModal"> Alterar</span>
+                                <span ng-click="deleteunidade(Unidade)" class="btn btn-danger"> Excluir</span>
                             </div>
                         </td>
                     </tr>
@@ -70,23 +74,30 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">Cadastro de Estado</h4>
+                            <h4 class="modal-title">Cadastro de Unidade</h4>
                         </div>
                         <div class="modal-body">
 
-                            <form class="form-horizontal" role="form" ng-submit="postestado()">
+                            <form class="form-horizontal" role="form">
                                 <div class="form-group">
-                                    <label class="control-label col-sm-2" for="email">Estado:</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="EstadoAdd" placeholder="Informe o Estado" size="80" name="nm_estado"
-                                               ng-model="nm_estado">
+                                    <label class="control-label col-sm-4" for="email">Nome:</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" id="UnidadeAdd" placeholder="Informe a Unidade" size="80" name="nm_unida"
+                                               ng-model="nm_unida">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label col-sm-2" for="pwd">Pais:</label>
-                                    <div class="col-sm-10">
-                                        <select class="form-control" id="PaisAdd" ng-model="myOption"
-                                                ng-options="value.cd_pais as value.nm_pais for value in myOptions ">
+                                    <label class="control-label col-sm-4" for="email">Nome Abrev.:</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" id="UnidadeAdd" placeholder="Informe o nome abreviado da Unidade" size="80" name="abrv_unida"
+                                               ng-model="abrv_unida">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4" for="pwd">Grupo de Unidade:</label>
+                                    <div class="col-sm-6">
+                                        <select class="form-control" id="UnidadeAdd" ng-model="myOption"
+                                                ng-options="value.cd_gruni as value.nm_gruni for value in myOptions ">
                                             <option>--</option>
                                         </select>
 
@@ -99,7 +110,7 @@
 
                         </div>
                         <div class="modal-footer">
-                            <span ng-click="postestado(myOption)" class="btn btn-primary" data-dismiss="modal"> Salvar</span>
+                            <span ng-click="postunidade(myOption)" class="btn btn-primary" data-dismiss="modal"> Salvar</span>
                             <button type="button" class="btn btn-warning" data-dismiss="modal">Cancelar</button>
                         </div>
                     </div>
@@ -114,22 +125,29 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">Alteração do Estado</h4>
+                            <h4 class="modal-title">Alteração da Unidade</h4>
                         </div>
                         <div class="modal-body">
                             <form class="form-horizontal" role="form">
                                 <div class="form-group">
-                                    <label class="control-label col-sm-2" for="email">Estado:</label>
+                                    <label class="control-label col-sm-2" for="email">Nome:</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="EstadoAdd" placeholder="Informe o Estado" size="80" name="nm_estado"
-                                               ng-model="nm_estado">
+                                        <input type="text" class="form-control" id="UnidadeAdd" placeholder="Informe a Unidade" size="80" name="nm_unida"
+                                               ng-model="nm_unida">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label col-sm-2" for="pwd">Pais:</label>
+                                    <label class="control-label col-sm-2" for="email">Nome Abrev.:</label>
                                     <div class="col-sm-10">
-                                        <select class="form-control" id="PaisAdd" ng-model="cd_pais"
-                                                ng-options="value.cd_pais as value.nm_pais for value in myOptions ">
+                                        <input type="text" class="form-control" id="UnidadeAdd" placeholder="Informe o nome abrevido da Unidade" size="80" name="abrv_unida"
+                                               ng-model="abrv_unida">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2" for="pwd">Grupo de Unidade:</label>
+                                    <div class="col-sm-10">
+                                        <select class="form-control" id="UnidadeAdd" ng-model="myOption"
+                                                ng-options="value.cd_cd_gruni as value.nm_gruni for value in myOptions ">
                                             <option>--</option>
                                         </select>
 
@@ -141,7 +159,7 @@
                             </form>
                         </div>
                         <div class="modal-footer">
-                            <span ng-click="atualizaestado()" class="btn btn-primary" data-dismiss="modal"> Salvar</span>
+                            <span ng-click="atualizaunidade()" class="btn btn-primary" data-dismiss="modal"> Salvar</span>
                             <button type="button" class="btn btn-warning" data-dismiss="modal">Cancelar</button>
                         </div>
                     </div>

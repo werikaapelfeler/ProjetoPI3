@@ -223,6 +223,7 @@
     <Compile Include="Controllers\SensoresCtrl\GrunisWebAPIController.cs" />
     <Compile Include="Controllers\SensoresCtrl\MicroRegioesWebAPIController.cs" />
     <Compile Include="Controllers\SensoresCtrl\PaisWebAPIController.cs" />
+    <Compile Include="Controllers\SensoresCtrl\SensoresWebAPIController.cs" />
     <Compile Include="Controllers\SensoresCtrl\TipoSensorWebAPIController.cs" />
     <Compile Include="Controllers\SensoresCtrl\UnidadesWebAPIController.cs" />
     <Compile Include="Controllers\SensorListagemController.cs" />

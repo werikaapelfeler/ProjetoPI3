@@ -7,7 +7,7 @@
 <h3 class="page-header">Tipos de Sensores</h3>
 
 
-<div data-ng-controller="paisController">
+<div data-ng-controller="tiposensorController">
 
     <div id="top" class="row">
         <div class="col-md-3">
@@ -42,14 +42,14 @@
                         <td><b>Nome</b></td>
                         <td><b>Ação</b></td>
                     </tr>
-                    <tr data-ng-repeat="Pais in listapais | filter:criteria">
+                    <tr data-ng-repeat="TipoSensor in listatiposensor | filter:criteria">
                         <td class="text-left col-lg-10">
-                            {{ Pais.nm_pais }}
+                            {{ TipoSensor.nm_tpsensor }}
                         </td>
                         <td>
                             <div class="btn-group btn-group-justified">
-                                <span ng-click="obterPaisPorId(Pais)" class="btn btn-info" data-toggle="modal" data-target="#myModal"> Alterar</span>
-                                <span ng-click="deletepais(Pais)" class="btn btn-danger"> Excluir</span>
+                                <span ng-click="obterTipoSensorPorId(TipoSensor)" class="btn btn-info" data-toggle="modal" data-target="#myModal"> Alterar</span>
+                                <span ng-click="deletetiposensor(TipoSensor)" class="btn btn-danger"> Excluir</span>
                             </div>
                         </td>
                     </tr>
@@ -63,23 +63,23 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">Cadastro de Paises</h4>
+                            <h4 class="modal-title">Cadastro de Tipo de Sensor</h4>
                         </div>
                         <div class="modal-body">
 
-                            <form class="form-horizontal" role="form" ng-submit="postpais()">
+                            <form class="form-horizontal" role="form">
                                 <div class="form-group">
-                                    <label class="control-label col-sm-2" for="email">Pais:</label>
+                                    <label class="control-label col-sm-2" for="email">Tipo de Sensor:</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="EstadoAdd" placeholder="Informe o Pais" size="80" name="nm_pais"
-                                               ng-model="nm_pais">
+                                        <input type="text" class="form-control" id="TipoSensorAdd" placeholder="Informe o Pais" size="80" name="nm_tpsensor"
+                                               ng-model="nm_tpsensor">
                                     </div>
                                 </div>
                             </form>
 
                         </div>
                         <div class="modal-footer">
-                            <span ng-click="postpais()" class="btn btn-primary" data-dismiss="modal"> Salvar</span>
+                            <span ng-click="posttiposensor()" class="btn btn-primary" data-dismiss="modal"> Salvar</span>
                             <button type="button" class="btn btn-warning" data-dismiss="modal">Cancelar</button>
                         </div>
                     </div>
@@ -94,19 +94,19 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">Alteração do Estado</h4>
+                            <h4 class="modal-title">Alteração do Tipo de Sensor</h4>
                         </div>
                         <div class="modal-body">
                             <form class="form-inline" role="form">
                                 <div class="form-group input-group h6">
-                                    <input type="text" class="form-control" id="PaisAdd" placeholder="Informe o Estado" size="80" name="nm_pais"
-                                           ng-model="nm_pais">
+                                    <input type="text" class="form-control" id="TipoSensorAdd" placeholder="Informe o Tipo de Sensor" size="80" name="nm_tpsensor"
+                                           ng-model="nm_tpsensor">
                                 </div>
 
                             </form>
                         </div>
                         <div class="modal-footer">
-                            <span ng-click="atualizapais()" class="btn btn-primary" data-dismiss="modal"> Salvar</span>
+                            <span ng-click="atualizatiposensor()" class="btn btn-primary" data-dismiss="modal"> Salvar</span>
                             <button type="button" class="btn btn-warning" data-dismiss="modal">Cancelar</button>
                         </div>
                     </div>

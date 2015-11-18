@@ -7,7 +7,7 @@
 <h3 class="page-header">Cidades</h3>
 
 <!--<div class="tab-content" data-ng-controller="estadoController">-->
-<div data-ng-controller="estadoController">
+<div data-ng-controller="cidadeController">
 
     <div id="top" class="row">
         <div class="col-md-3">
@@ -40,22 +40,28 @@
                 <table class="table table-bordered table-hover">
                     <tr>
                         <td><b>Nome</b></td>
-                        <td><b>Pais</b></td>
+                        <td><b>Região</b></td>
+                        <td><b>Estado</b></td>
                         <td><b>Ação</b></td>
                     </tr>
-                    <tr data-ng-repeat="Estado in listaestado | filter:criteria">
-                        <td class="text-left col-lg-5">
-                            {{ Estado.nm_estado }}
+                    <tr data-ng-repeat="Cidade in listacidades | filter:criteria">
+                        <td class="text-left col-lg-3">
+                            {{ Cidade.nm_cidade }}
                         </td>
-                        <td class="text-left col-lg-5">
-                            <span ng-repeat="Pais in NomePais" ng-if="Pais.cd_pais == Estado.cd_pais">
-                                {{ Pais.nm_pais }}
+                        <td class="text-left col-lg-3">
+                            <span ng-repeat="MicroRegiao in myOptions" ng-if="MicroRegiao.cd_microregiao == Cidade.cd_microregiao">
+                                {{ MicroRegiao.nm_microregiao }}
+                            </span>
+                        </td>
+                        <td class="text-left col-lg-3">
+                            <span ng-repeat="Estado in myOptionsEstado" ng-if="Estado.cd_estado == Cidade.cd_estado">
+                                {{ Estado.nm_estado }}
                             </span>
                         </td>
                         <td>
                             <div class="btn-group btn-group-justified">
-                                <span ng-click="obterEstadoPorId(Estado)" class="btn btn-info" data-toggle="modal" data-target="#myModal"> Alterar</span>
-                                <span ng-click="deleteestado(Estado)" class="btn btn-danger"> Excluir</span>
+                                <span ng-click="obterCidadePorId(Cidade)" class="btn btn-info" data-toggle="modal" data-target="#myModal"> Alterar</span>
+                                <span ng-click="deletecidade(Cidade)" class="btn btn-danger"> Excluir</span>
                             </div>
                         </td>
                     </tr>
@@ -73,19 +79,20 @@
                         </div>
                         <div class="modal-body">
 
-                            <form class="form-horizontal" role="form" ng-submit="postestado()">
+                            <form class="form-horizontal" role="form">
                                 <div class="form-group">
-                                    <label class="control-label col-sm-2" for="email">Estado:</label>
+                                    <label class="control-label col-sm-2" for="email">Cidade:</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="EstadoAdd" placeholder="Informe o Estado" size="80" name="nm_estado"
-                                               ng-model="nm_estado">
+                                        <input type="text" class="form-control" id="cidadeAdd" placeholder="Informe a Cidade" size="80" name="nm_cidade"
+                                               ng-model="nm_cidade">
                                     </div>
                                 </div>
+
                                 <div class="form-group">
-                                    <label class="control-label col-sm-2" for="pwd">Pais:</label>
+                                    <label class="control-label col-sm-2" for="pwd">Regiao:</label>
                                     <div class="col-sm-10">
-                                        <select class="form-control" id="PaisAdd" ng-model="myOption"
-                                                ng-options="value.cd_pais as value.nm_pais for value in myOptions ">
+                                        <select class="form-control" id="CidadeAdd" ng-model="myOption"
+                                                ng-options="value.cd_microregiao as value.nm_microregiao for value in myOptions ">
                                             <option>--</option>
                                         </select>
 
@@ -94,11 +101,25 @@
                                         </div>
                                     </div>
                                 </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2" for="pwd">Estado:</label>
+                                    <div class="col-sm-10">
+                                        <select class="form-control" id="CidadeAdd" ng-model="myOption2"
+                                                ng-options="value.cd_estado as value.nm_estado for value in myOptionsEstado ">
+                                            <option>--</option>
+                                        </select>
+
+                                        <div>
+                                            ng-model value: {{myOption2}}
+                                        </div>
+                                    </div>
+                                </div>
                             </form>
 
                         </div>
                         <div class="modal-footer">
-                            <span ng-click="postestado(myOption)" class="btn btn-primary" data-dismiss="modal"> Salvar</span>
+                            <span ng-click="postcidade(myOption, myOption2)" class="btn btn-primary" data-dismiss="modal"> Salvar</span>
                             <button type="button" class="btn btn-warning" data-dismiss="modal">Cancelar</button>
                         </div>
                     </div>
@@ -113,22 +134,23 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">Alteração do Estado</h4>
+                            <h4 class="modal-title">Alteração da Cidade</h4>
                         </div>
                         <div class="modal-body">
                             <form class="form-horizontal" role="form">
                                 <div class="form-group">
-                                    <label class="control-label col-sm-2" for="email">Estado:</label>
+                                    <label class="control-label col-sm-2" for="email">Cidade:</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="EstadoAdd" placeholder="Informe o Estado" size="80" name="nm_estado"
-                                               ng-model="nm_estado">
+                                        <input type="text" class="form-control" id="cidadeAdd" placeholder="Informe a Cidade" size="80" name="nm_cidade"
+                                               ng-model="nm_cidade">
                                     </div>
                                 </div>
+
                                 <div class="form-group">
-                                    <label class="control-label col-sm-2" for="pwd">Pais:</label>
+                                    <label class="control-label col-sm-2" for="pwd">Regiao:</label>
                                     <div class="col-sm-10">
-                                        <select class="form-control" id="PaisAdd" ng-model="cd_pais"
-                                                ng-options="value.cd_pais as value.nm_pais for value in myOptions ">
+                                        <select class="form-control" id="CidadeAdd" ng-model="myOption"
+                                                ng-options="value.cd_microregiao as value.nm_microregiao for value in myOptions ">
                                             <option>--</option>
                                         </select>
 
@@ -137,10 +159,24 @@
                                         </div>
                                     </div>
                                 </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2" for="pwd">Estado:</label>
+                                    <div class="col-sm-10">
+                                        <select class="form-control" id="CidadeAdd" ng-model="myOption2"
+                                                ng-options="value.cd_estado as value.nm_estado for value in myOptionsEstado ">
+                                            <option>--</option>
+                                        </select>
+
+                                        <div>
+                                            ng-model value: {{myOption2}}
+                                        </div>
+                                    </div>
+                                </div>
                             </form>
                         </div>
                         <div class="modal-footer">
-                            <span ng-click="atualizaestado()" class="btn btn-primary" data-dismiss="modal"> Salvar</span>
+                            <span ng-click="atualizacidade()" class="btn btn-primary" data-dismiss="modal"> Salvar</span>
                             <button type="button" class="btn btn-warning" data-dismiss="modal">Cancelar</button>
                         </div>
                     </div>

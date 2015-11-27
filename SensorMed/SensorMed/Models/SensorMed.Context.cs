@@ -36,5 +36,6 @@ namespace SensorMed.Models
         public virtual DbSet<Sensor> Sensor { get; set; }
         public virtual DbSet<TipoSensor> TipoSensor { get; set; }
         public virtual DbSet<Unidade> Unidade { get; set; }
+        public virtual DbSet<Usuario> Usuario { get; set; }
     }
 }

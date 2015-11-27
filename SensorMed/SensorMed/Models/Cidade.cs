@@ -21,9 +21,9 @@ namespace SensorMed.Models
         }
     
         public int cd_cidade { get; set; }
-        public string nm_cidade { get; set; }
-        public int cd_microregiao { get; set; }
         public int cd_estado { get; set; }
+        public int cd_microregiao { get; set; }
+        public string nm_cidade { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Bairro> Bairro { get; set; }

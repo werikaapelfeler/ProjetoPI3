@@ -22,6 +22,7 @@ namespace SensorMed.Models
     
         public int cd_pais { get; set; }
         public string nm_pais { get; set; }
+        public string sigla_pais { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Estado> Estado { get; set; }

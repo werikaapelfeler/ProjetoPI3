@@ -18,14 +18,15 @@
             <PropertyRef Name="cd_cidade" />
           </Key>
           <Property Name="cd_cidade" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="nm_cidade" Type="varchar" MaxLength="45" Nullable="false" />
-          <Property Name="cd_microregiao" Type="int" Nullable="false" />
           <Property Name="cd_estado" Type="int" Nullable="false" />
+          <Property Name="cd_microregiao" Type="int" Nullable="false" />
+          <Property Name="nm_cidade" Type="varchar" MaxLength="45" Nullable="false" />
         </EntityType>
         <EntityType Name="Dados">
           <Key>
-            <PropertyRef Name="dt_medicao_dados" />
+            <PropertyRef Name="id_dados" />
           </Key>
+          <Property Name="id_dados" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="dt_medicao_dados" Type="datetime" Nullable="false" />
           <Property Name="cd_sensor" Type="int" Nullable="false" />
           <Property Name="vl_medicao_dados" Type="float" Nullable="false" />
@@ -46,8 +47,9 @@
             <PropertyRef Name="cd_estado" />
           </Key>
           <Property Name="cd_estado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="nm_estado" Type="varchar" MaxLength="45" />
           <Property Name="cd_pais" Type="int" />
+          <Property Name="nm_estado" Type="varchar" MaxLength="45" />
+          <Property Name="sigla_esta" Type="varchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="Gruni">
           <Key>
@@ -69,17 +71,19 @@
           </Key>
           <Property Name="cd_pais" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nm_pais" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="sigla_pais" Type="varchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="Sensor">
           <Key>
             <PropertyRef Name="cd_sensor" />
           </Key>
           <Property Name="cd_sensor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="nm_sensor" Type="varchar" MaxLength="45" />
-          <Property Name="cd_unida" Type="int" Nullable="false" />
-          <Property Name="cd_tpsensor" Type="int" Nullable="false" />
-          <Property Name="cd_ender" Type="int" />
+          <Property Name="cd_tpsensor" Type="int" />
           <Property Name="tag_sensor" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="cd_unida" Type="int" />
+          <Property Name="faixa_inic" Type="int" />
+          <Property Name="faixa_fim" Type="int" />
+          <Property Name="cd_ender" Type="int" />
         </EntityType>
         <EntityType Name="TipoSensor">
           <Key>
@@ -96,6 +100,16 @@
           <Property Name="cd_gruni" Type="int" Nullable="false" />
           <Property Name="nm_unida" Type="varchar" MaxLength="45" Nullable="false" />
           <Property Name="abrv_unida" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="cd_usuario" />
+          </Key>
+          <Property Name="cd_usuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nm_uuario" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="login" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="senha" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="45" Nullable="false" />
         </EntityType>
         <Association Name="cd_bairro">
           <End Role="Bairro" Type="Self.Bairro" Multiplicity="1" />
@@ -194,7 +208,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="cd_tpsensor">
-          <End Role="TipoSensor" Type="Self.TipoSensor" Multiplicity="1" />
+          <End Role="TipoSensor" Type="Self.TipoSensor" Multiplicity="0..1" />
           <End Role="Sensor" Type="Self.Sensor" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TipoSensor">
@@ -206,7 +220,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="cd_unida">
-          <End Role="Unidade" Type="Self.Unidade" Multiplicity="1" />
+          <End Role="Unidade" Type="Self.Unidade" Multiplicity="0..1" />
           <End Role="Sensor" Type="Self.Sensor" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Unidade">
@@ -229,6 +243,7 @@
           <EntitySet Name="Sensor" EntityType="Self.Sensor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TipoSensor" EntityType="Self.TipoSensor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Unidade" EntityType="Self.Unidade" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="cd_bairro" Association="Self.cd_bairro">
             <End Role="Bairro" EntitySet="Bairro" />
             <End Role="Endereco" EntitySet="Endereco" />
@@ -290,17 +305,18 @@
             <PropertyRef Name="cd_cidade" />
           </Key>
           <Property Name="cd_cidade" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="nm_cidade" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cd_microregiao" Type="Int32" Nullable="false" />
           <Property Name="cd_estado" Type="Int32" Nullable="false" />
+          <Property Name="cd_microregiao" Type="Int32" Nullable="false" />
+          <Property Name="nm_cidade" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Bairro" Relationship="Self.cd_cidade" FromRole="Cidade" ToRole="Bairro" />
           <NavigationProperty Name="Estado" Relationship="Self.cd_estado" FromRole="Cidade" ToRole="Estado" />
           <NavigationProperty Name="MicroRegiao" Relationship="Self.cd_microregiao" FromRole="Cidade" ToRole="MicroRegiao" />
         </EntityType>
         <EntityType Name="Dados">
           <Key>
-            <PropertyRef Name="dt_medicao_dados" />
+            <PropertyRef Name="id_dados" />
           </Key>
+          <Property Name="id_dados" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="dt_medicao_dados" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="cd_sensor" Type="Int32" Nullable="false" />
           <Property Name="vl_medicao_dados" Type="Double" Nullable="false" />
@@ -324,8 +340,9 @@
             <PropertyRef Name="cd_estado" />
           </Key>
           <Property Name="cd_estado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="nm_estado" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
           <Property Name="cd_pais" Type="Int32" />
+          <Property Name="nm_estado" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="sigla_esta" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Cidade" Relationship="Self.cd_estado" FromRole="Estado" ToRole="Cidade" />
           <NavigationProperty Name="Pais" Relationship="Self.cd_pais" FromRole="Estado" ToRole="Pais" />
         </EntityType>
@@ -351,6 +368,7 @@
           </Key>
           <Property Name="cd_pais" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nm_pais" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="sigla_pais" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Estado" Relationship="Self.cd_pais" FromRole="Pais" ToRole="Estado" />
         </EntityType>
         <EntityType Name="Sensor">
@@ -358,11 +376,12 @@
             <PropertyRef Name="cd_sensor" />
           </Key>
           <Property Name="cd_sensor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="nm_sensor" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
-          <Property Name="cd_unida" Type="Int32" Nullable="false" />
-          <Property Name="cd_tpsensor" Type="Int32" Nullable="false" />
-          <Property Name="cd_ender" Type="Int32" />
+          <Property Name="cd_tpsensor" Type="Int32" />
           <Property Name="tag_sensor" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cd_unida" Type="Int32" />
+          <Property Name="faixa_inic" Type="Int32" />
+          <Property Name="faixa_fim" Type="Int32" />
+          <Property Name="cd_ender" Type="Int32" />
           <NavigationProperty Name="Dados" Relationship="Self.cd_sensor" FromRole="Sensor" ToRole="Dados" />
           <NavigationProperty Name="Endereco" Relationship="Self.cd_ender" FromRole="Sensor" ToRole="Endereco" />
           <NavigationProperty Name="TipoSensor" Relationship="Self.cd_tpsensor" FromRole="Sensor" ToRole="TipoSensor" />
@@ -386,6 +405,16 @@
           <Property Name="abrv_unida" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Gruni" Relationship="Self.cd_gruni" FromRole="Unidade" ToRole="Gruni" />
           <NavigationProperty Name="Sensor" Relationship="Self.cd_unida" FromRole="Unidade" ToRole="Sensor" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="cd_usuario" />
+          </Key>
+          <Property Name="cd_usuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nm_uuario" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="login" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="senha" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
         <Association Name="cd_bairro">
           <End Role="Bairro" Type="Self.Bairro" Multiplicity="1" />
@@ -484,7 +513,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="cd_tpsensor">
-          <End Role="TipoSensor" Type="Self.TipoSensor" Multiplicity="1" />
+          <End Role="TipoSensor" Type="Self.TipoSensor" Multiplicity="0..1" />
           <End Role="Sensor" Type="Self.Sensor" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TipoSensor">
@@ -496,7 +525,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="cd_unida">
-          <End Role="Unidade" Type="Self.Unidade" Multiplicity="1" />
+          <End Role="Unidade" Type="Self.Unidade" Multiplicity="0..1" />
           <End Role="Sensor" Type="Self.Sensor" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Unidade">
@@ -519,6 +548,7 @@
           <EntitySet Name="Sensor" EntityType="Self.Sensor" />
           <EntitySet Name="TipoSensor" EntityType="Self.TipoSensor" />
           <EntitySet Name="Unidade" EntityType="Self.Unidade" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" />
           <AssociationSet Name="cd_bairro" Association="Self.cd_bairro">
             <End Role="Bairro" EntitySet="Bairro" />
             <End Role="Endereco" EntitySet="Endereco" />
@@ -579,15 +609,16 @@
             <EntityTypeMapping TypeName="SensorMedModel.Cidade">
               <MappingFragment StoreEntitySet="Cidade">
                 <ScalarProperty Name="cd_cidade" ColumnName="cd_cidade" />
-                <ScalarProperty Name="nm_cidade" ColumnName="nm_cidade" />
-                <ScalarProperty Name="cd_microregiao" ColumnName="cd_microregiao" />
                 <ScalarProperty Name="cd_estado" ColumnName="cd_estado" />
+                <ScalarProperty Name="cd_microregiao" ColumnName="cd_microregiao" />
+                <ScalarProperty Name="nm_cidade" ColumnName="nm_cidade" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Dados">
             <EntityTypeMapping TypeName="SensorMedModel.Dados">
               <MappingFragment StoreEntitySet="Dados">
+                <ScalarProperty Name="id_dados" ColumnName="id_dados" />
                 <ScalarProperty Name="dt_medicao_dados" ColumnName="dt_medicao_dados" />
                 <ScalarProperty Name="cd_sensor" ColumnName="cd_sensor" />
                 <ScalarProperty Name="vl_medicao_dados" ColumnName="vl_medicao_dados" />
@@ -610,8 +641,9 @@
             <EntityTypeMapping TypeName="SensorMedModel.Estado">
               <MappingFragment StoreEntitySet="Estado">
                 <ScalarProperty Name="cd_estado" ColumnName="cd_estado" />
-                <ScalarProperty Name="nm_estado" ColumnName="nm_estado" />
                 <ScalarProperty Name="cd_pais" ColumnName="cd_pais" />
+                <ScalarProperty Name="nm_estado" ColumnName="nm_estado" />
+                <ScalarProperty Name="sigla_esta" ColumnName="sigla_esta" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -636,6 +668,7 @@
               <MappingFragment StoreEntitySet="Pais">
                 <ScalarProperty Name="cd_pais" ColumnName="cd_pais" />
                 <ScalarProperty Name="nm_pais" ColumnName="nm_pais" />
+                <ScalarProperty Name="sigla_pais" ColumnName="sigla_pais" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -643,11 +676,12 @@
             <EntityTypeMapping TypeName="SensorMedModel.Sensor">
               <MappingFragment StoreEntitySet="Sensor">
                 <ScalarProperty Name="cd_sensor" ColumnName="cd_sensor" />
-                <ScalarProperty Name="nm_sensor" ColumnName="nm_sensor" />
-                <ScalarProperty Name="cd_unida" ColumnName="cd_unida" />
                 <ScalarProperty Name="cd_tpsensor" ColumnName="cd_tpsensor" />
-                <ScalarProperty Name="cd_ender" ColumnName="cd_ender" />
                 <ScalarProperty Name="tag_sensor" ColumnName="tag_sensor" />
+                <ScalarProperty Name="cd_unida" ColumnName="cd_unida" />
+                <ScalarProperty Name="faixa_inic" ColumnName="faixa_inic" />
+                <ScalarProperty Name="faixa_fim" ColumnName="faixa_fim" />
+                <ScalarProperty Name="cd_ender" ColumnName="cd_ender" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -666,6 +700,17 @@
                 <ScalarProperty Name="cd_gruni" ColumnName="cd_gruni" />
                 <ScalarProperty Name="nm_unida" ColumnName="nm_unida" />
                 <ScalarProperty Name="abrv_unida" ColumnName="abrv_unida" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuario">
+            <EntityTypeMapping TypeName="SensorMedModel.Usuario">
+              <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="cd_usuario" ColumnName="cd_usuario" />
+                <ScalarProperty Name="nm_uuario" ColumnName="nm_uuario" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="senha" ColumnName="senha" />
+                <ScalarProperty Name="email" ColumnName="email" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

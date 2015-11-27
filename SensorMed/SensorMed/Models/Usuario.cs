@@ -12,13 +12,12 @@ namespace SensorMed.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Dados
+    public partial class Usuario
     {
-        public int id_dados { get; set; }
-        public System.DateTime dt_medicao_dados { get; set; }
-        public int cd_sensor { get; set; }
-        public double vl_medicao_dados { get; set; }
-    
-        public virtual Sensor Sensor { get; set; }
+        public int cd_usuario { get; set; }
+        public string nm_uuario { get; set; }
+        public string login { get; set; }
+        public string senha { get; set; }
+        public string email { get; set; }
     }
 }

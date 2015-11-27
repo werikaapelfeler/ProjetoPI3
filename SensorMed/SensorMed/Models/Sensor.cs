@@ -21,11 +21,12 @@ namespace SensorMed.Models
         }
     
         public int cd_sensor { get; set; }
-        public string nm_sensor { get; set; }
-        public int cd_unida { get; set; }
-        public int cd_tpsensor { get; set; }
-        public Nullable<int> cd_ender { get; set; }
+        public Nullable<int> cd_tpsensor { get; set; }
         public string tag_sensor { get; set; }
+        public Nullable<int> cd_unida { get; set; }
+        public Nullable<int> faixa_inic { get; set; }
+        public Nullable<int> faixa_fim { get; set; }
+        public Nullable<int> cd_ender { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Dados> Dados { get; set; }

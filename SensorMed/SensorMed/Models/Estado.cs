@@ -21,8 +21,9 @@ namespace SensorMed.Models
         }
     
         public int cd_estado { get; set; }
-        public string nm_estado { get; set; }
         public Nullable<int> cd_pais { get; set; }
+        public string nm_estado { get; set; }
+        public string sigla_esta { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Cidade> Cidade { get; set; }

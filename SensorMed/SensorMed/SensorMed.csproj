@@ -296,8 +296,6 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\estilo.css" />
     <Content Include="Content\jqueryTouchSlider.css" />
-    <Content Include="Content\toastr.css" />
-    <Content Include="Content\toastr.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Models\SensorMed.Context.tt">
@@ -329,8 +327,6 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
-    <Content Include="Content\toastr.scss" />
-    <Content Include="Content\toastr.less" />
     <EntityDeploy Include="Models\SensorMed.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>SensorMed.Designer.cs</LastGenOutput>

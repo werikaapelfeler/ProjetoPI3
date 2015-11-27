@@ -4,19 +4,19 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="846264ecefbd49829dac2748e186001b" Name="Diagram1">
+      <Diagram DiagramId="846264ecefbd49829dac2748e186001b" Name="Diagram1" ZoomLevel="82">
         <EntityTypeShape EntityType="SensorMedModel.Bairro" Width="1.5" PointX="7.5" PointY="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="SensorMedModel.Cidade" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="SensorMedModel.Dados" Width="1.5" PointX="14.25" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SensorMedModel.Dados" Width="1.5" PointX="14.625" PointY="3" IsExpanded="true" />
         <EntityTypeShape EntityType="SensorMedModel.Endereco" Width="1.5" PointX="9.75" PointY="1.25" IsExpanded="true" />
         <EntityTypeShape EntityType="SensorMedModel.Estado" Width="1.5" PointX="3" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="SensorMedModel.Gruni" Width="1.5" PointX="7.5" PointY="7.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="SensorMedModel.MicroRegiao" Width="1.5" PointX="3" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SensorMedModel.Gruni" Width="1.5" PointX="10.125" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SensorMedModel.MicroRegiao" Width="1.5" PointX="5.25" PointY="4.375" IsExpanded="true" />
         <EntityTypeShape EntityType="SensorMedModel.Pais" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="SensorMedModel.Sensor" Width="1.5" PointX="12" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="SensorMedModel.TipoSensor" Width="1.5" PointX="9.75" PointY="4.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="SensorMedModel.Unidade" Width="1.5" PointX="9.75" PointY="7.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="SensorMedModel.Usuario" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SensorMedModel.Sensor" Width="1.5" PointX="12.375" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SensorMedModel.TipoSensor" Width="1.5" PointX="9.75" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SensorMedModel.Unidade" Width="1.5" PointX="12.5" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SensorMedModel.Usuario" Width="1.5" PointX="1.375" PointY="4.875" IsExpanded="true" />
         <AssociationConnector Association="SensorMedModel.cd_bairro" ManuallyRouted="false" />
         <AssociationConnector Association="SensorMedModel.cd_cidade" ManuallyRouted="false" />
         <AssociationConnector Association="SensorMedModel.cd_estado" ManuallyRouted="false" />

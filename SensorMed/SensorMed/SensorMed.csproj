@@ -213,77 +213,62 @@
     <Compile Include="Controllers\EstadoListagemController.cs" />
     <Compile Include="Controllers\GruniListagemController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ImportaArqController.cs" />
     <Compile Include="Controllers\MicroRegiaoListagemController.cs" />
     <Compile Include="Controllers\PaisListagemController.cs" />
+    <Compile Include="Controllers\RelatorioListagemController.cs" />
     <Compile Include="Controllers\SensoresCtrl\BairroswebAPIController.cs" />
     <Compile Include="Controllers\SensoresCtrl\CidadesWebAPIController.cs" />
     <Compile Include="Controllers\SensoresCtrl\DadosWebAPIController.cs" />
     <Compile Include="Controllers\SensoresCtrl\EnderecosWebAPIController.cs" />
     <Compile Include="Controllers\SensoresCtrl\EstadosWebAPIController.cs" />
+    <Compile Include="Controllers\SensoresCtrl\FileUploaderController.cs" />
     <Compile Include="Controllers\SensoresCtrl\GrunisWebAPIController.cs" />
     <Compile Include="Controllers\SensoresCtrl\MicroRegioesWebAPIController.cs" />
     <Compile Include="Controllers\SensoresCtrl\PaisWebAPIController.cs" />
+    <Compile Include="Controllers\SensoresCtrl\RelatorioListagemController.cs" />
     <Compile Include="Controllers\SensoresCtrl\SensoresWebAPIController.cs" />
     <Compile Include="Controllers\SensoresCtrl\TipoSensorWebAPIController.cs" />
     <Compile Include="Controllers\SensoresCtrl\UnidadesWebAPIController.cs" />
+    <Compile Include="Controllers\SensoresCtrl\UsuariosController.cs" />
     <Compile Include="Controllers\SensorListagemController.cs" />
     <Compile Include="Controllers\TipoSensorListagemController.cs" />
     <Compile Include="Controllers\UnidadeListagemController.cs" />
+    <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\Bairro.cs">
-      <DependentUpon>ModelSensor.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Cidade.cs">
-      <DependentUpon>ModelSensor.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Dados.cs">
-      <DependentUpon>ModelSensor.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Endereco.cs">
-      <DependentUpon>ModelSensor.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Estado.cs">
-      <DependentUpon>ModelSensor.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Gruni.cs">
-      <DependentUpon>ModelSensor.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Models\Bairro.cs" />
+    <Compile Include="Models\Cidade.cs" />
+    <Compile Include="Models\Dados.cs" />
+    <Compile Include="Models\Endereco.cs" />
+    <Compile Include="Models\Estado.cs" />
+    <Compile Include="Models\Gruni.cs" />
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\MicroRegiao.cs">
-      <DependentUpon>ModelSensor.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ModelSensor.Context.cs">
+    <Compile Include="Models\MicroRegiao.cs" />
+    <Compile Include="Models\Pais.cs" />
+    <Compile Include="Models\Sensor.cs" />
+    <Compile Include="Models\SensorMed.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ModelSensor.Context.tt</DependentUpon>
+      <DependentUpon>SensorMed.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ModelSensor.cs">
+    <Compile Include="Models\SensorMed.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ModelSensor.tt</DependentUpon>
+      <DependentUpon>SensorMed.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ModelSensor.Designer.cs">
+    <Compile Include="Models\SensorMed.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ModelSensor.edmx</DependentUpon>
+      <DependentUpon>SensorMed.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\Pais.cs">
-      <DependentUpon>ModelSensor.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Sensor.cs">
-      <DependentUpon>ModelSensor.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\TipoSensor.cs">
-      <DependentUpon>ModelSensor.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Unidade.cs">
-      <DependentUpon>ModelSensor.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Models\TipoSensor.cs" />
+    <Compile Include="Models\Unidade.cs" />
+    <Compile Include="Models\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
@@ -295,8 +280,17 @@
     <Content Include="App_Themes\images\04.jpg" />
     <Content Include="App_Themes\images\a11.png" />
     <Content Include="App_Themes\images\a21.png" />
+    <Content Include="App_Themes\images\anemmetro.jpg" />
     <Content Include="App_Themes\images\b05.png" />
     <Content Include="App_Themes\images\b21.png" />
+    <Content Include="App_Themes\images\barometro.jpg" />
+    <Content Include="App_Themes\images\bela praia de camburi , vitoria es.jpg" />
+    <Content Include="App_Themes\images\cariacica_1.jpg" />
+    <Content Include="App_Themes\images\fff.PNG" />
+    <Content Include="App_Themes\images\graficolinha.JPG" />
+    <Content Include="App_Themes\images\logo.png" />
+    <Content Include="App_Themes\images\pluvimometro.jpg" />
+    <Content Include="App_Themes\images\vitoria.jpg" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -306,20 +300,50 @@
     <Content Include="Content\toastr.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="Models\ModelSensor.Context.tt">
+    <Content Include="Models\SensorMed.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModelSensor.edmx</DependentUpon>
-      <LastGenOutput>ModelSensor.Context.cs</LastGenOutput>
+      <DependentUpon>SensorMed.edmx</DependentUpon>
+      <LastGenOutput>SensorMed.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\ModelSensor.tt">
+    <Content Include="Models\SensorMed.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModelSensor.edmx</DependentUpon>
-      <LastGenOutput>ModelSensor.cs</LastGenOutput>
+      <DependentUpon>SensorMed.edmx</DependentUpon>
+      <LastGenOutput>SensorMed.cs</LastGenOutput>
+    </Content>
+    <Content Include="Areas\HelpPage\Views\Web.config" />
+    <Content Include="Areas\HelpPage\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\ResourceModel.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\Index.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\TextSample.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\SimpleTypeModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\Samples.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\Parameters.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ModelDescriptionLink.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\KeyValuePairModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\InvalidSample.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ImageSample.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\HelpPageApiModel.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\EnumTypeModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\DictionaryModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ComplexTypeModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
+    <Content Include="Content\toastr.scss" />
+    <Content Include="Content\toastr.less" />
+    <EntityDeploy Include="Models\SensorMed.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SensorMed.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\SensorMed.edmx.diagram">
+      <DependentUpon>SensorMed.edmx</DependentUpon>
     </Content>
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-animate.min.js" />
     <Content Include="Scripts\angular-aria.js" />
     <Content Include="Scripts\angular-aria.min.js" />
+    <Content Include="Scripts\angular-chart.js" />
+    <Content Include="Scripts\angular-chart.min.js" />
     <Content Include="Scripts\angular-cookies.js" />
     <Content Include="Scripts\angular-cookies.min.js" />
     <Content Include="Scripts\angular-csp.css" />
@@ -344,73 +368,41 @@
     <Content Include="Scripts\AngularAPP\Controller.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Areas\HelpPage\Views\Web.config" />
-    <Content Include="Areas\HelpPage\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\HelpPage\Views\Help\ResourceModel.cshtml" />
-    <Content Include="Areas\HelpPage\Views\Help\Index.cshtml" />
-    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\TextSample.cshtml" />
-    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\SimpleTypeModelDescription.cshtml" />
-    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\Samples.cshtml" />
-    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\Parameters.cshtml" />
-    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ModelDescriptionLink.cshtml" />
-    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\KeyValuePairModelDescription.cshtml" />
-    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\InvalidSample.cshtml" />
-    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ImageSample.cshtml" />
-    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\HelpPageApiModel.cshtml" />
-    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\EnumTypeModelDescription.cshtml" />
-    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\DictionaryModelDescription.cshtml" />
-    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ComplexTypeModelDescription.cshtml" />
-    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
-    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
-    <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
-    <Content Include="Scripts\errors.json" />
-    <Content Include="Scripts\angular.min.js.map" />
-    <Content Include="Scripts\angular-touch.min.js.map" />
-    <Content Include="Scripts\angular-sanitize.min.js.map" />
-    <Content Include="Scripts\angular-route.min.js.map" />
-    <Content Include="Scripts\angular-resource.min.js.map" />
-    <Content Include="Scripts\angular-messages.min.js.map" />
-    <Content Include="Scripts\angular-message-format.min.js.map" />
-    <Content Include="Scripts\angular-loader.min.js.map" />
-    <Content Include="Scripts\angular-cookies.min.js.map" />
-    <Content Include="Scripts\angular-aria.min.js.map" />
-    <Content Include="Scripts\angular-animate.min.js.map" />
-    <Content Include="Scripts\highcharts\4.1.5\adapters\standalone-framework.js" />
-    <Content Include="Scripts\highcharts\4.1.5\adapters\standalone-framework.src.js" />
-    <Content Include="Scripts\highcharts\4.1.5\highcharts-3d.js" />
-    <Content Include="Scripts\highcharts\4.1.5\highcharts-3d.src.js" />
-    <Content Include="Scripts\highcharts\4.1.5\highcharts-more.js" />
-    <Content Include="Scripts\highcharts\4.1.5\highcharts-more.src.js" />
-    <Content Include="Scripts\highcharts\4.1.5\highcharts.js" />
-    <Content Include="Scripts\highcharts\4.1.5\highcharts.src.js" />
-    <Content Include="Scripts\highcharts\4.1.5\modules\broken-axis.js" />
-    <Content Include="Scripts\highcharts\4.1.5\modules\broken-axis.src.js" />
-    <Content Include="Scripts\highcharts\4.1.5\modules\canvas-tools.js" />
-    <Content Include="Scripts\highcharts\4.1.5\modules\canvas-tools.src.js" />
-    <Content Include="Scripts\highcharts\4.1.5\modules\data.js" />
-    <Content Include="Scripts\highcharts\4.1.5\modules\data.src.js" />
-    <Content Include="Scripts\highcharts\4.1.5\modules\drilldown.js" />
-    <Content Include="Scripts\highcharts\4.1.5\modules\drilldown.src.js" />
-    <Content Include="Scripts\highcharts\4.1.5\modules\exporting.js" />
-    <Content Include="Scripts\highcharts\4.1.5\modules\exporting.src.js" />
-    <Content Include="Scripts\highcharts\4.1.5\modules\funnel.js" />
-    <Content Include="Scripts\highcharts\4.1.5\modules\funnel.src.js" />
-    <Content Include="Scripts\highcharts\4.1.5\modules\heatmap.js" />
-    <Content Include="Scripts\highcharts\4.1.5\modules\heatmap.src.js" />
-    <Content Include="Scripts\highcharts\4.1.5\modules\no-data-to-display.js" />
-    <Content Include="Scripts\highcharts\4.1.5\modules\no-data-to-display.src.js" />
-    <Content Include="Scripts\highcharts\4.1.5\modules\solid-gauge.js" />
-    <Content Include="Scripts\highcharts\4.1.5\modules\solid-gauge.src.js" />
-    <Content Include="Scripts\highcharts\4.1.5\modules\treemap.js" />
-    <Content Include="Scripts\highcharts\4.1.5\modules\treemap.src.js" />
-    <Content Include="Scripts\highcharts\4.1.5\themes\dark-blue.js" />
-    <Content Include="Scripts\highcharts\4.1.5\themes\dark-green.js" />
-    <Content Include="Scripts\highcharts\4.1.5\themes\dark-unica.js" />
-    <Content Include="Scripts\highcharts\4.1.5\themes\gray.js" />
-    <Content Include="Scripts\highcharts\4.1.5\themes\grid-light.js" />
-    <Content Include="Scripts\highcharts\4.1.5\themes\grid.js" />
-    <Content Include="Scripts\highcharts\4.1.5\themes\sand-signika.js" />
-    <Content Include="Scripts\highcharts\4.1.5\themes\skies.js" />
+    <Content Include="Scripts\chartjs-modules\dx.module-core.debug.js" />
+    <Content Include="Scripts\chartjs-modules\dx.module-core.js" />
+    <Content Include="Scripts\chartjs-modules\dx.module-viz-charts.debug.js" />
+    <Content Include="Scripts\chartjs-modules\dx.module-viz-charts.js" />
+    <Content Include="Scripts\chartjs-modules\dx.module-viz-core.debug.js" />
+    <Content Include="Scripts\chartjs-modules\dx.module-viz-core.js" />
+    <Content Include="Scripts\chartjs-modules\dx.module-viz-gauges.debug.js" />
+    <Content Include="Scripts\chartjs-modules\dx.module-viz-gauges.js" />
+    <Content Include="Scripts\chartjs-modules\dx.module-viz-rangeselector.debug.js" />
+    <Content Include="Scripts\chartjs-modules\dx.module-viz-rangeselector.js" />
+    <Content Include="Scripts\chartjs-modules\dx.module-viz-sparklines.debug.js" />
+    <Content Include="Scripts\chartjs-modules\dx.module-viz-sparklines.js" />
+    <Content Include="Scripts\chartjs-modules\dx.module-viz-vectormap.debug.js" />
+    <Content Include="Scripts\chartjs-modules\dx.module-viz-vectormap.js" />
+    <Content Include="Scripts\cldr.js" />
+    <Content Include="Scripts\cldr\event.js" />
+    <Content Include="Scripts\cldr\supplemental.js" />
+    <Content Include="Scripts\cldr\unresolved.js" />
+    <Content Include="Scripts\d3\angularjs-nvd3-directives.js" />
+    <Content Include="Scripts\d3\angularjs-nvd3-directives.min.js" />
+    <Content Include="Scripts\d3\d3.js" />
+    <Content Include="Scripts\d3\d3.min.js" />
+    <Content Include="Scripts\d3\moment.js" />
+    <Content Include="Scripts\d3\nv.d3.js" />
+    <Content Include="Scripts\dx.chartjs.debug.js" />
+    <Content Include="Scripts\dx.chartjs.js" />
+    <Content Include="Scripts\globalize.js" />
+    <Content Include="Scripts\d3\LICENSE" />
+    <None Include="Scripts\jquery-2.1.4.intellisense.js" />
+    <Content Include="Scripts\globalize\currency.js" />
+    <Content Include="Scripts\globalize\date.js" />
+    <Content Include="Scripts\globalize\message.js" />
+    <Content Include="Scripts\globalize\number.js" />
+    <Content Include="Scripts\globalize\plural.js" />
+    <Content Include="Scripts\globalize\relative-time.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-dj.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-er.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-et.js" />
@@ -1155,23 +1147,13 @@
     <Content Include="Scripts\i18n\angular-locale_zh.js" />
     <Content Include="Scripts\i18n\angular-locale_zu-za.js" />
     <Content Include="Scripts\i18n\angular-locale_zu.js" />
-    <Content Include="Content\toastr.scss" />
-    <Content Include="Content\toastr.less" />
-    <EntityDeploy Include="Models\ModelSensor.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ModelSensor.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\ModelSensor.edmx.diagram">
-      <DependentUpon>ModelSensor.edmx</DependentUpon>
-    </Content>
-    <None Include="Scripts\jquery-2.1.4.intellisense.js" />
+    <Content Include="Scripts\importacao\fileupload.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
-    <Content Include="Scripts\jquery-2.1.4.min.map" />
-    <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.carousel.touch.slider.squadwuschel.1.0.2.js" />
     <Content Include="Scripts\jquery.carousel.touch.slider.squadwuschel.1.0.2.min.js" />
     <Content Include="Scripts\jquery.cj-swipe.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -1180,9 +1162,19 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Scripts\toastr.js" />
-    <Content Include="Scripts\toastr.min.js" />
-    <Content Include="Web.config" />
+    <None Include="Scripts\_references.js" />
+    <Content Include="Scripts\vectormap-data\africa.js" />
+    <Content Include="Scripts\vectormap-data\canada.js" />
+    <Content Include="Scripts\vectormap-data\eurasia.js" />
+    <Content Include="Scripts\vectormap-data\europe.js" />
+    <Content Include="Scripts\vectormap-data\usa.js" />
+    <Content Include="Scripts\vectormap-data\world.js" />
+    <Content Include="Scripts\vectormap-utils\dx.vectormaputils.debug.js" />
+    <Content Include="Scripts\vectormap-utils\dx.vectormaputils.js" />
+    <Content Include="Scripts\vectormap-utils\dx.vectormaputils.node.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -1191,13 +1183,11 @@
     </Content>
     <Content Include="Areas\HelpPage\Views\_ViewStart.cshtml" />
     <Content Include="Content\Site.css" />
-    <Content Include="Scripts\_references.js" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Scripts\version.json" />
     <Content Include="Views\GruniListagem\Index.cshtml" />
     <Content Include="Views\PaisListagem\Index.cshtml" />
     <Content Include="Views\UnidadeListagem\Index.cshtml" />
@@ -1208,6 +1198,9 @@
     <Content Include="Views\MicroRegiaoListagem\Index.cshtml" />
     <Content Include="Views\SensorListagem\Index.cshtml" />
     <Content Include="Views\TipoSensorListagem\Index.cshtml" />
+    <Content Include="Views\ImportaArq\Index.cshtml" />
+    <Content Include="Views\Usuario\Index.cshtml" />
+    <Content Include="Views\RelatorioListagem\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1219,6 +1212,20 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
+    <Content Include="Scripts\angular-animate.min.js.map" />
+    <Content Include="Scripts\angular-aria.min.js.map" />
+    <Content Include="Scripts\angular-cookies.min.js.map" />
+    <Content Include="Scripts\angular-loader.min.js.map" />
+    <Content Include="Scripts\angular-message-format.min.js.map" />
+    <Content Include="Scripts\angular-messages.min.js.map" />
+    <Content Include="Scripts\angular-resource.min.js.map" />
+    <Content Include="Scripts\angular-route.min.js.map" />
+    <Content Include="Scripts\angular-sanitize.min.js.map" />
+    <Content Include="Scripts\angular-touch.min.js.map" />
+    <Content Include="Scripts\angular.min.js.map" />
+    <Content Include="Scripts\errors.json" />
+    <Content Include="Scripts\jquery-2.1.4.min.map" />
+    <Content Include="Scripts\version.json" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

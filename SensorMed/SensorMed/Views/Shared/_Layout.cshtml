@@ -8,7 +8,11 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <header class='container-logo top-right' >
+        <a class="logo" href="~/Home">  
+            <h1>SensorMed - Medição de Dados</h1></a>
+    </header>
+    <nav class="navbar navbar-inverse">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -18,10 +22,10 @@
                 </button>
             </div>
 
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Relatórios", "Index", "Home", new { area = "" }, null)</li>
-                    <li>@Html.ActionLink("Importação", "Index", "Home", new { area = "" }, null)</li>
+            <div class="navbar-collapse collapse ">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">@Html.ActionLink("Relatórios", "Index", "RelatorioListagem", new { area = "" }, null)</li>
+                    <li class="dropdown">@Html.ActionLink("Importação", "Index", "ImportaArq", new { area = "" }, null)</li>
 
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cadastros <span class="caret"></span></a>
@@ -38,28 +42,39 @@
                             <li>@Html.ActionLink("Micros Regiões", "Index", "MicroRegiaoListagem", new { area = "" }, null)</li>
                         </ul>
                     </li>
+                    <li>@Html.ActionLink("Login", "Index", "Usuario", new { area = "" }, null)</li>
                 </ul>
             </div>
         </div>
-    </div>
+    </nav>
     <div class="container body-content">
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - SensorMed - Medições de Dados</p>
         </footer>
     </div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     <script src="~/Scripts/angular.min.js"></script>
+    <script src="~/Scripts/angular.js"></script>
+    <script src="~/Scripts/angular-route.min.js"></script>
+    <script src="~/Scripts/angular-route.js"></script>
     <script src="~/Scripts/AngularAPP/Controller.js"></script>
     <script src="~/Scripts/jquery-2.1.4.js"></script>
     <script src="~/Scripts/jquery-2.1.4.min.js"></script>
-    <script src="~/Scripts/toastr.min.js"></script>
-    <script src="~/Scripts/toastr.js"></script>
-    <script src="~/Scripts/angular-toastr.js"></script>
-    <script src="~/Scripts/angular-toastr.min.js"></script>
+    <script src="~/Scripts/angular-chart.js"></script>
+    <script src="~/Scripts/angular-chart.min.js"></script>
+    <script src="~/Scripts/d3/d3.js"></script>
+    <script src="~/Scripts/d3/d3.min.js"></script>
+    <script src="~/Scripts/d3/moment.js"></script>
+    <script src="~/Scripts/d3/nv.d3.js"></script>
+    <script src="~/Scripts/d3/angularjs-nvd3-directives.js"></script>
+    <script src="~/Scripts/d3/angularjs-nvd3-directives.min.js"></script>
+    <script src="~/Scripts/importacao/fileupload.js"></script>
+
+   
     @RenderSection("scripts", required: false)
 
 

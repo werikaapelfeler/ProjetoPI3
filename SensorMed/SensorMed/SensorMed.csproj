@@ -241,34 +241,58 @@
     </Compile>
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\Bairro.cs" />
-    <Compile Include="Models\Cidade.cs" />
-    <Compile Include="Models\Dados.cs" />
-    <Compile Include="Models\Endereco.cs" />
-    <Compile Include="Models\Estado.cs" />
-    <Compile Include="Models\Gruni.cs" />
+    <Compile Include="Models\Bairro.cs">
+      <DependentUpon>ModelSensor.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Cidade.cs">
+      <DependentUpon>ModelSensor.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Dados.cs">
+      <DependentUpon>ModelSensor.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Endereco.cs">
+      <DependentUpon>ModelSensor.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Estado.cs">
+      <DependentUpon>ModelSensor.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Gruni.cs">
+      <DependentUpon>ModelSensor.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\MicroRegiao.cs" />
-    <Compile Include="Models\Pais.cs" />
-    <Compile Include="Models\Sensor.cs" />
-    <Compile Include="Models\SensorMed.Context.cs">
+    <Compile Include="Models\MicroRegiao.cs">
+      <DependentUpon>ModelSensor.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModelSensor.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>SensorMed.Context.tt</DependentUpon>
+      <DependentUpon>ModelSensor.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\SensorMed.cs">
+    <Compile Include="Models\ModelSensor.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>SensorMed.tt</DependentUpon>
+      <DependentUpon>ModelSensor.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\SensorMed.Designer.cs">
+    <Compile Include="Models\ModelSensor.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>SensorMed.edmx</DependentUpon>
+      <DependentUpon>ModelSensor.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\TipoSensor.cs" />
-    <Compile Include="Models\Unidade.cs" />
-    <Compile Include="Models\Usuario.cs" />
+    <Compile Include="Models\Pais.cs">
+      <DependentUpon>ModelSensor.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Sensor.cs">
+      <DependentUpon>ModelSensor.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TipoSensor.cs">
+      <DependentUpon>ModelSensor.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Unidade.cs">
+      <DependentUpon>ModelSensor.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Usuario.cs">
+      <DependentUpon>ModelSensor.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
@@ -292,22 +316,15 @@
     <Content Include="App_Themes\images\pluvimometro.jpg" />
     <Content Include="App_Themes\images\vitoria.jpg" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\estilo.css" />
     <Content Include="Content\jqueryTouchSlider.css" />
     <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Models\SensorMed.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>SensorMed.edmx</DependentUpon>
-      <LastGenOutput>SensorMed.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\SensorMed.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>SensorMed.edmx</DependentUpon>
-      <LastGenOutput>SensorMed.cs</LastGenOutput>
-    </Content>
     <Content Include="Areas\HelpPage\Views\Web.config" />
     <Content Include="Areas\HelpPage\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\ResourceModel.cshtml" />
@@ -327,12 +344,15 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
-    <EntityDeploy Include="Models\SensorMed.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>SensorMed.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\SensorMed.edmx.diagram">
-      <DependentUpon>SensorMed.edmx</DependentUpon>
+    <Content Include="Models\ModelSensor.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelSensor.edmx</DependentUpon>
+      <LastGenOutput>ModelSensor.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\ModelSensor.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelSensor.edmx</DependentUpon>
+      <LastGenOutput>ModelSensor.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-animate.min.js" />
@@ -362,6 +382,8 @@
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\AngularAPP\Controller.js" />
+    <Content Include="Scripts\angularjs-nvd3-directives.js" />
+    <Content Include="Scripts\angularjs-nvd3-directives.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\chartjs-modules\dx.module-core.debug.js" />
@@ -392,6 +414,22 @@
     <Content Include="Scripts\dx.chartjs.js" />
     <Content Include="Scripts\globalize.js" />
     <Content Include="Scripts\d3\LICENSE" />
+    <EntityDeploy Include="Models\ModelSensor.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModelSensor.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\ModelSensor.edmx.diagram">
+      <DependentUpon>ModelSensor.edmx</DependentUpon>
+    </Content>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="nvd3.license.md" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\globalize\currency.js" />
     <Content Include="Scripts\globalize\date.js" />
@@ -1156,6 +1194,8 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\jssor.slider.mini.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\nv.d3.js" />
+    <Content Include="Scripts\nv.d3.min.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <None Include="Scripts\_references.js" />
@@ -1202,10 +1242,6 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\angular-animate.min.js.map" />

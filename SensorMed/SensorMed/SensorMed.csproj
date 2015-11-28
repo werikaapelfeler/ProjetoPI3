@@ -226,7 +226,6 @@
     <Compile Include="Controllers\SensoresCtrl\GrunisWebAPIController.cs" />
     <Compile Include="Controllers\SensoresCtrl\MicroRegioesWebAPIController.cs" />
     <Compile Include="Controllers\SensoresCtrl\PaisWebAPIController.cs" />
-    <Compile Include="Controllers\SensoresCtrl\RelatorioListagemController.cs" />
     <Compile Include="Controllers\SensoresCtrl\SensoresWebAPIController.cs" />
     <Compile Include="Controllers\SensoresCtrl\TipoSensorWebAPIController.cs" />
     <Compile Include="Controllers\SensoresCtrl\UnidadesWebAPIController.cs" />
@@ -299,22 +298,22 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Themes\images\01.jpg" />
-    <Content Include="App_Themes\images\03.jpg" />
-    <Content Include="App_Themes\images\04.jpg" />
-    <Content Include="App_Themes\images\a11.png" />
-    <Content Include="App_Themes\images\a21.png" />
-    <Content Include="App_Themes\images\anemmetro.jpg" />
-    <Content Include="App_Themes\images\b05.png" />
-    <Content Include="App_Themes\images\b21.png" />
-    <Content Include="App_Themes\images\barometro.jpg" />
-    <Content Include="App_Themes\images\bela praia de camburi , vitoria es.jpg" />
-    <Content Include="App_Themes\images\cariacica_1.jpg" />
-    <Content Include="App_Themes\images\fff.PNG" />
-    <Content Include="App_Themes\images\graficolinha.JPG" />
-    <Content Include="App_Themes\images\logo.png" />
-    <Content Include="App_Themes\images\pluvimometro.jpg" />
-    <Content Include="App_Themes\images\vitoria.jpg" />
+    <Content Include="App_Themes\img\01.jpg" />
+    <Content Include="App_Themes\img\03.jpg" />
+    <Content Include="App_Themes\img\04.jpg" />
+    <Content Include="App_Themes\img\a11.png" />
+    <Content Include="App_Themes\img\a21.png" />
+    <Content Include="App_Themes\img\anemmetro.jpg" />
+    <Content Include="App_Themes\img\b05.png" />
+    <Content Include="App_Themes\img\b21.png" />
+    <Content Include="App_Themes\img\barometro.jpg" />
+    <Content Include="App_Themes\img\bela praia de camburi , vitoria es.jpg" />
+    <Content Include="App_Themes\img\cariacica_1.jpg" />
+    <Content Include="App_Themes\img\fff.PNG" />
+    <Content Include="App_Themes\img\graficolinha.JPG" />
+    <Content Include="App_Themes\img\logo.png" />
+    <Content Include="App_Themes\img\pluvimometro.jpg" />
+    <Content Include="App_Themes\img\vitoria.jpg" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />

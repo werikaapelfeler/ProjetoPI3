@@ -56,7 +56,7 @@ function cidadeController($scope, $http) {
             $scope.listacidade = Cidade.data;
 
         }, function () {
-            toastr["Error"]("Erro ao Obter as Unidades", "")
+
         })
     }
 
@@ -121,11 +121,14 @@ function cidadeController($scope, $http) {
             GetAllEstados();
 
             GetAllMicroRegiao();
+
+            toastr['success']("Cidade alterada com sucesso", "SensorMed - Medições de Dados");
 			
 
         });
         res.error(function (data) {
             console.log(data);
+            toastr['error']("Error ao alterar a cidade", "SensorMed - Medições de Dados");
         });
 
         console.log(cidade);
@@ -154,6 +157,7 @@ function cidadeController($scope, $http) {
 
         res.success(function (data) {
             console.log(data);
+            toastr['success']("Cidade excluida com sucesso", "SensorMed - Medições de Dados");
             $http.get('http://localhost:61062/api/CidadesWebAPI/GetCidade').success(function (data) {
                 $scope.listacidades = data;
             }).error(function () {
@@ -161,6 +165,7 @@ function cidadeController($scope, $http) {
         });
         res.error(function (data) {
             console.log(data);
+            toastr['error']("Error ao excluir a cidade", "SensorMed - Medições de Dados");
         });
 
 
@@ -175,9 +180,11 @@ function cidadeController($scope, $http) {
         var res = $http.post('http://localhost:61062/api/CidadesWebAPI/PostCidade', cidade);
         res.success(function (data) {
             console.log(data);
+            toastr['success']("Cidade cadastrada com sucesso", "SensorMed - Medições de Dados");
         });
         res.error(function (data) {
             console.log(data);
+            toastr['error']("Error ao cadastrar a cidade", "SensorMed - Medições de Dados");
         });
 
         $scope.listacidades.push(cidade);
@@ -200,9 +207,11 @@ function microregiaoController($scope, $http) {
         var res = $http.delete('http://localhost:61062/api/MicroRegioesWebAPI/DeleteMicroRegiao/' + JSON.stringify(MicroRegiao.cd_microregiao));
 
         res.success(function (data) {
-            GetAllMicroRegiao()
+            GetAllMicroRegiao();
+            toastr['success']("Micro Região excluida com sucesso", "SensorMed - Medições de Dados");
         });
         res.error(function (data) {
+            toastr['error']("Error ao excluir Micro Região", "SensorMed - Medições de Dados");
         });
     }
 
@@ -212,8 +221,10 @@ function microregiaoController($scope, $http) {
         }; var res = $http.post('http://localhost:61062/api/MicroRegioesWebAPI/PostMicroRegiao', microregiao);
         res.success(function (data) {
             console.log(MicroRegiao);
+            toastr['success']("Micro Região cadastrada com sucesso", "SensorMed - Medições de Dados");
         });
         res.error(function (data) {
+            toastr['error']("Error ao cadastrar micro região", "SensorMed - Medições de Dados");
         });
 
         $scope.listamicroregiao.push(microregiao);
@@ -259,10 +270,12 @@ function microregiaoController($scope, $http) {
         res.success(function (data) {
             console.log(data);
             GetAllMicroRegiao();
+            toastr['success']("Micro Região alterada com sucesso", "SensorMed - Medições de Dados");
 
         });
         res.error(function (data) {
             console.log(data);
+            toastr['error']("Error ao alterar micro região", "SensorMed - Medições de Dados");
         });
 
         console.log(microregiao);
@@ -293,9 +306,12 @@ function paisController($scope, $http) {
         res.success(function (data) {
 
             GetAllPais();
+            toastr['success']("Pais excluido com sucesso", "SensorMed - Medições de Dados");
 
         });
         res.error(function (data) {
+
+            toastr['error']("O pais não foi excluido", "SensorMed - Medições de Dados");
 
         });
 
@@ -336,10 +352,12 @@ function paisController($scope, $http) {
         res.success(function (data) {
             console.log(data);
             GetAllPais();
+            toastr['success']("Pais alterado com sucesso", "SensorMed - Medições de Dados");
             
         });
         res.error(function (data) {
             console.log(data);
+            toastr['error']("Erro ao alterar o pais", "SensorMed - Medições de Dados");
         });
 
         console.log(pais);
@@ -354,6 +372,8 @@ function paisController($scope, $http) {
             toastr['success']("Pais cadastrado com sucesso", "SensorMed - Medições de Dados");
         });
         res.error(function (data) {
+
+            toastr['error']("Erro ao cadastrar o pais", "SensorMed - Medições de Dados");
         });
 
         $scope.listapais.push(pais);
@@ -397,7 +417,7 @@ function estadoController($scope, $http) {
 
             }, function()
             {
-                toastr["Error"]("Erro ao Obter os Celulares", "DevMedia - Crud com MVC e AngularJs")
+
             })
     }
 
@@ -451,10 +471,13 @@ function estadoController($scope, $http) {
 
             GetAllPais();
 
+            toastr['success']("Estado alterado com sucesso", "SensorMed - Medições de Dados");
+
             
         });
         res.error(function (data) {
             console.log(data);
+            toastr['error']("Error ao alterar o estado", "SensorMed - Medições de Dados");
         });
 
         console.log(estado);
@@ -468,6 +491,7 @@ function estadoController($scope, $http) {
 
         res.success(function (data) {
             console.log(data);
+            toastr['success']("Estado excluido com sucesso", "SensorMed - Medições de Dados");
             $http.get('http://localhost:61062/api/EstadosWebAPI/GetEstado').success(function (data) {
                 $scope.listaestado = data;
             }).error(function () {
@@ -475,6 +499,7 @@ function estadoController($scope, $http) {
         });
         res.error(function (data) {
             console.log(data);
+            toastr['error']("Error ao excluir o estado", "SensorMed - Medições de Dados");
         });
 
 
@@ -487,9 +512,11 @@ function estadoController($scope, $http) {
         }; var res = $http.post('http://localhost:61062/api/EstadosWebAPI/PostEstado', estado);
         res.success(function (data) {
             console.log(data);
+            toastr['success']("Estado cadastrado com sucesso", "SensorMed - Medições de Dados");
         });
         res.error(function (data) {
             console.log(data);
+            toastr['error']("Error ao cadastrar o estado", "SensorMed - Medições de Dados");
         });
 
         $scope.listaestado.push(estado);
@@ -518,7 +545,6 @@ function bairroController($scope, $http) {
 
             }, function()
             {
-                toastr["Error"]("Erro ao Obter os Bairros", "")
             })
     }
 
@@ -571,11 +597,13 @@ function bairroController($scope, $http) {
             GetAllBairros();
 
             GetAllCidade();
+            toastr['success']("Bairro alterado com sucesso", "SensorMed - Medições de Dados");
 
             
         });
         res.error(function (data) {
             console.log(data);
+            toastr['error']("Error ao alterar o bairro", "SensorMed - Medições de Dados");
         });
 
         console.log(bairro);
@@ -603,6 +631,7 @@ function bairroController($scope, $http) {
 
         res.success(function (data) {
             console.log(data);
+            toastr['success']("Bairro excluido com sucesso", "SensorMed - Medições de Dados");
             $http.get('http://localhost:61062/api/BairrosWebAPI/GetBairro').success(function (data) {
                 $scope.listabairro = data;
             }).error(function () {
@@ -610,6 +639,7 @@ function bairroController($scope, $http) {
         });
         res.error(function (data) {
             console.log(data);
+            toastr['error']("Error ao excluir o bairro", "SensorMed - Medições de Dados");
         });
 
 
@@ -622,9 +652,11 @@ function bairroController($scope, $http) {
         }; var res = $http.post('http://localhost:61062/api/BairrosWebAPI/PostBairro', bairro);
         res.success(function (data) {
             console.log(data);
+            toastr['success']("Bairro cadastrado com sucesso", "SensorMed - Medições de Dados");
         });
         res.error(function (data) {
             console.log(data);
+            toastr['error']("Error ao cadastrar o bairro", "SensorMed - Medições de Dados");
         });
 
         $scope.listabairro.push(bairro);
@@ -655,7 +687,6 @@ function enderecoController($scope, $http) {
 
             }, function()
             {
-                toastr["Error"]("Erro ao Obter os Celulares", "DevMedia - Crud com MVC e AngularJs")
             })
     }
 
@@ -715,10 +746,13 @@ function enderecoController($scope, $http) {
 
             GetAllBairros();
 
+            toastr['success']("Endereço alterado com sucesso", "SensorMed - Medições de Dados");
+
             
         });
         res.error(function (data) {
             console.log(data);
+            toastr['error']("Error ao alterar o endereço", "SensorMed - Medições de Dados");
         });
 
         console.log(endereco);
@@ -746,6 +780,7 @@ function enderecoController($scope, $http) {
 
         res.success(function (data) {
             console.log(data);
+            toastr['success']("Endereço excluido com sucesso", "SensorMed - Medições de Dados");
             $http.get('http://localhost:61062/api/EnderecosWebAPI/GetEndereco').success(function (data) {
                 $scope.listaendereco = data;
             }).error(function () {
@@ -753,6 +788,7 @@ function enderecoController($scope, $http) {
         });
         res.error(function (data) {
             console.log(data);
+            toastr['error']("Error ao excluir o endereço", "SensorMed - Medições de Dados");
         });
 
 
@@ -768,9 +804,11 @@ function enderecoController($scope, $http) {
         }; var res = $http.post('http://localhost:61062/api/EnderecosWebAPI/PostEndereco', endereco);
         res.success(function (data) {
             console.log(data);
+            toastr['success']("Endereço cadastrado com sucesso", "SensorMed - Medições de Dados");
         });
         res.error(function (data) {
             console.log(data);
+            toastr['success']("Error ao cadastrar o endereço", "SensorMed - Medições de Dados");
         });
 
         $scope.listaendereco.push(endereco);
@@ -792,9 +830,11 @@ function gruniController($scope, $http) {
         var res = $http.delete('http://localhost:61062/api/GrunisWebAPI/DeleteGruni/' + JSON.stringify(Gruni.cd_gruni));
 
         res.success(function (data) {
-            GetAllGruni()
+            GetAllGruni();
+            toastr['success']("Grupo de Unidade excluido com sucesso", "SensorMed - Medições de Dados");
         });
         res.error(function (data) {
+            toastr['error']("Error ao excluir grupo de unidade", "SensorMed - Medições de Dados");
         });
     }
 
@@ -803,8 +843,10 @@ function gruniController($scope, $http) {
             "nm_gruni": $scope.nm_gruni
         }; var res = $http.post('http://localhost:61062/api/GrunisWebAPI/PostGruni', gruni);
         res.success(function (data) {
+            toastr['success']("Grupo de Unidade cadastrado com sucesso", "SensorMed - Medições de Dados");
         });
         res.error(function (data) {
+            toastr['error']("Error ao cadastrar grupo de unidade", "SensorMed - Medições de Dados");
         });
 
         $scope.listagruni.push(gruni);
@@ -850,10 +892,12 @@ function gruniController($scope, $http) {
         res.success(function (data) {
             console.log(data);
             GetAllGruni();
+            toastr['success']("Grupo de Unidade alterado com sucesso", "SensorMed - Medições de Dados");
 
         });
         res.error(function (data) {
             console.log(data);
+            toastr['error']("Error ao alterar grupo de unidade", "SensorMed - Medições de Dados");
         });
 
         console.log(gruni);
@@ -887,7 +931,6 @@ function unidadeController($scope, $http) {
             $scope.listaunidade = Unidade.data;
 
         }, function () {
-            toastr["Error"]("Erro ao Obter as Unidades", "")
         })
     }
 
@@ -943,10 +986,13 @@ function unidadeController($scope, $http) {
 
             GetAllGruni();
 
+            toastr['success']("Unidade cadastrada com sucesso", "SensorMed - Medições de Dados");
+
 
         });
         res.error(function (data) {
             console.log(data);
+            toastr['error']("Error ao alterar unidade", "SensorMed - Medições de Dados");
         });
 
         console.log(unidade);
@@ -974,6 +1020,7 @@ function unidadeController($scope, $http) {
 
         res.success(function (data) {
             console.log(data);
+            toastr['success']("Unidade excluida com sucesso", "SensorMed - Medições de Dados");
             $http.get('http://localhost:61062/api/UnidadesWebAPI/GetUnidade').success(function (data) {
                 $scope.listaunidade = data;
             }).error(function () {
@@ -981,6 +1028,7 @@ function unidadeController($scope, $http) {
         });
         res.error(function (data) {
             console.log(data);
+            toastr['error']("Error ao excluir unidade", "SensorMed - Medições de Dados");
         });
 
 
@@ -994,9 +1042,11 @@ function unidadeController($scope, $http) {
         }; var res = $http.post('http://localhost:61062/api/UnidadesWebAPI/PostUnidade', unidade);
         res.success(function (data) {
             console.log(data);
+            toastr['success']("Unidade cadastrada com sucesso", "SensorMed - Medições de Dados");
         });
         res.error(function (data) {
             console.log(data);
+            toastr['error']("Error ao cadastrar unidade", "SensorMed - Medições de Dados");
         });
 
         $scope.listaunidade.push(unidade);
@@ -1018,9 +1068,11 @@ function tiposensorController($scope, $http) {
         var res = $http.delete('http://localhost:61062/api/TipoSensorWebAPI/DeleteTipoSensor/' + JSON.stringify(TipoSensor.cd_tpsensor));
 
         res.success(function (data) {
-            GetAllTipoSensor()
+            GetAllTipoSensor();
+            toastr['success']("Tipo de Sensor cadastrado com sucesso", "SensorMed - Medições de Dados");
         });
         res.error(function (data) {
+            toastr['error']("Error ao excluir tipo de sensor", "SensorMed - Medições de Dados");
         });
     }
 
@@ -1029,8 +1081,10 @@ function tiposensorController($scope, $http) {
             "nm_tpsensor": $scope.nm_tpsensor
         }; var res = $http.post('http://localhost:61062/api/TipoSensorWebAPI/PostTipoSensor', tiposensor);
         res.success(function (data) {
+            toastr['success']("Tipo de Sensor cadastrado com sucesso", "SensorMed - Medições de Dados");
         });
         res.error(function (data) {
+            toastr['error']("Error ao cadastrar tipo de sensor", "SensorMed - Medições de Dados");
         });
 
         $scope.listatiposensor.push(tiposensor);
@@ -1076,10 +1130,12 @@ function tiposensorController($scope, $http) {
         res.success(function (data) {
             console.log(data);
             GetAllTipoSensor();
+            toastr['success']("Tipo de Sensor alterado com sucesso", "SensorMed - Medições de Dados");
 
         });
         res.error(function (data) {
             console.log(data);
+            toastr['error']("Error ao alterar tipo de sensor", "SensorMed - Medições de Dados");
         });
 
         console.log(tiposensor);
@@ -1116,7 +1172,6 @@ function sensorController($scope, $http) {
             $scope.listasensores = Sensor.data;
 
         }, function () {
-            toastr["Error"]("Erro ao Obter as Unidades", "")
         })
     }
 
@@ -1196,10 +1251,13 @@ function sensorController($scope, $http) {
 			
             GetAllEndereco();
 
+            toastr['success']("Sensor alterado com sucesso", "SensorMed - Medições de Dados");
+
 
         });
         res.error(function (data) {
             console.log(data);
+            toastr['error']("Error ao alterar sensor", "SensorMed - Medições de Dados");
         });
 
         console.log(sensor);
@@ -1247,6 +1305,7 @@ function sensorController($scope, $http) {
 
         res.success(function (data) {
             console.log(data);
+            toastr['success']("Sensor excluido com sucesso", "SensorMed - Medições de Dados");
             $http.get('http://localhost:61062/api/SensoresWebAPI/GetSensor').success(function (data) {
                 $scope.listasensores = data;
             }).error(function () {
@@ -1254,6 +1313,7 @@ function sensorController($scope, $http) {
         });
         res.error(function (data) {
             console.log(data);
+            toastr['error']("Error ao excluir sensor", "SensorMed - Medições de Dados");
         });
 
 
@@ -1268,10 +1328,12 @@ function sensorController($scope, $http) {
             "cd_tpsensor": cd_tpsensor
         }; var res = $http.post('http://localhost:61062/api/SensoresWebAPI/PostSensor', sensor);
         res.success(function (data) {
+            toastr['success']("Sensor cadastrado com sucesso", "SensorMed - Medições de Dados");
             console.log(data);
         });
         res.error(function (data) {
             console.log(data);
+            toastr['error']("Error ao cadastrar o sensor", "SensorMed - Medições de Dados");
         });
 
         $scope.listasensores.push(sensor);
